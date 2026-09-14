@@ -1,4 +1,4 @@
-# PreventCar
+![PreventCar](docs/assets/logo.jpg)
 
 Sistema de gerenciamento de manutenção preventiva para veículos automotores.
 
@@ -40,51 +40,7 @@ Drivvo, Fuelio e AUTOsist — nenhum deles prioriza manutenção preventiva auto
 
 ## Identidade visual
 
-Base visual do produto (detalhes em [IDENTIDADE_VISUAL.md](docs/IDENTIDADE_VISUAL.md)):
-
-### Paleta de cores
-
-| Token | Uso | Hex |
-|---|---|---|
-| `--color-primary` | Ações principais, links | `#2563EB` |
-| `--color-primary-hover` | Hover/active primário | `#1D4ED8` |
-| `--color-primary-light` | Fundos leves e destaques | `#DBEAFE` |
-| `--color-accent` | Ações de destaque (ex.: "Agendar") | `#F97316` |
-| `--color-accent-hover` | Hover do accent | `#EA580C` |
-| `--color-text` | Texto principal | `#111827` |
-| `--color-text-muted` | Texto secundário | `#6B7280` |
-| `--color-border` | Bordas e divisores | `#E5E7EB` |
-| `--color-bg` | Fundo da aplicação | `#FFFFFF` |
-| `--color-bg-alt` | Fundo alternativo | `#F3F4F6` |
-
-Cores semânticas de status (núcleo do produto — alertas de manutenção):
-
-| Status | Significado | Cor | Fundo claro |
-|---|---|---|---|
-| Em dia | Sem pendências | `#16A34A` | `#DCFCE7` |
-| Atenção | Próximo do prazo | `#D97706` | `#FEF3C7` |
-| Atrasado | Prazo vencido | `#DC2626` | `#FEE2E2` |
-
-### Tipografia
-
-Família **Inter** (Google Fonts), fallback `system-ui, -apple-system, sans-serif`. Uma única família cobre título e corpo, variando o peso.
-
-| Estilo | Tamanho / Altura | Peso | Uso |
-|---|---|---|---|
-| H1 | 32px / 40px | 700 | Título de página/dashboard |
-| H2 | 24px / 32px | 600 | Título de seção |
-| H3 | 18px / 28px | 600 | Título de card/subseção |
-| Body | 16px / 24px | 400 | Texto padrão |
-| Small | 14px / 20px | 400 | Legendas |
-| Micro | 12px / 16px | 500 | Badges, labels de status |
-
-### Espaçamento e componentes
-
-- Escala de espaçamento em base 4px: `4 · 8 · 12 · 16 · 24 · 32 · 48 · 64`.
-- Raio `8px` para cards, botões e inputs; `999px` (pill) para badges de status.
-- Elevação leve em cards (`0 1px 3px rgba(0,0,0,0.08)`) e forte em modais (`0 10px 25px rgba(0,0,0,0.15)`).
-- Ícones em estilo outline (Lucide/Feather), 20–24px, com área de toque mínima de 44x44px.
-- Acessibilidade: contraste AA (4.5:1), foco visível e status sempre com texto/label, nunca só cor.
+Paleta em tons de azul (`#2563EB`) com accent laranja (`#F97316`), tipografia Inter e espaçamento em base 4px. Detalhes completos de cores, status e componentes em [IDENTIDADE_VISUAL.md](docs/IDENTIDADE_VISUAL.md).
 
 ## Status atual
 
