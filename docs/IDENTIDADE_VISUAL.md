@@ -2,6 +2,8 @@
 
 Este documento define a base visual do PreventCar: paleta de cores, tipografia, espaçamento e padrões de componentes de interface. Como a stack ainda não foi definida, os tokens abaixo são independentes de tecnologia (funcionam como variáveis CSS, tema de qualquer framework, ou apenas como referência de design).
 
+![Logo PreventCar](assets/logo.jpg)
+
 ## 1. Personalidade da marca
 
 O público do PreventCar mistura motoristas comuns, motoristas de aplicativo, gestores de frota e mecânicos usando o celular no meio do trabalho (RNF02). A identidade visual parte de três princípios:
@@ -9,8 +11,6 @@ O público do PreventCar mistura motoristas comuns, motoristas de aplicativo, ge
 - **Confiável** — cores e tipografia sóbrias, associadas a segurança e tecnologia automotiva.
 - **Direta** — hierarquia visual clara, pouca decoração, foco em status e prazos (o produto vive de alertas).
 - **Acessível no dia a dia** — legível em tela pequena, boa área de toque, contraste alto.
-
-> Ponto de partida assumido; se vocês já têm uma direção de marca diferente (mais "startup"/vibrante, mais "corporativo", etc.), me diga e eu ajusto a paleta e o tom.
 
 ## 2. Paleta de cores
 
