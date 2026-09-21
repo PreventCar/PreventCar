@@ -12,7 +12,7 @@ Este documento consolida a Engenharia de Requisitos do projeto: requisitos funci
 | RF02 | Cadastro de itens | O sistema deve permitir o cadastro de itens. |
 | RF03 | Informar tempo de uso do item | O sistema deve permitir que o usuário informe o tempo de uso de um item. |
 | RF04 | Alertas | O sistema deve permitir que alertas automáticos sejam enviados antes, durante e após o prazo. |
-| RF05 | Referência de durabilidade de peças | O sistema deve manter uma base de referência de durabilidade por combinação de modelo de veículo e tipo de peça/item, expressa em quilometragem e/ou tempo estimado de uso. Essa base é alimentada, na SP1, a partir de manuais dos fabricantes e outras fontes técnicas confiáveis cadastradas pela equipe PreventCar (RNF06), e é usada para calcular quando um item se aproxima do limite de durabilidade (RF03, RF04). |
+| RF05 | Referência de durabilidade de peças | O sistema deve manter uma referência de durabilidade das peças/itens, em quilometragem e/ou tempo, associada ao veículo e ao item cadastrado, para apoiar os alertas de manutenção (RF03, RF04). A origem exata dessa referência será definida em etapa posterior do projeto. |
 | RF06 | Históricos de manutenções | O sistema deve permitir que o usuário visualize os históricos de manutenções. |
 | RF07 | Cadastro de veículos | O sistema deve permitir o cadastro de veículos. |
 | RF08 | Inativar veículos | O sistema deve permitir que o usuário inative veículos, mantendo o histórico associado (sem exclusão definitiva). |
