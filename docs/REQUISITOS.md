@@ -12,12 +12,12 @@ Este documento consolida a Engenharia de Requisitos do projeto: requisitos funci
 | RF02 | Cadastro de itens | O sistema deve permitir o cadastro de itens. |
 | RF03 | Informar tempo de uso do item | O sistema deve permitir que o usuário informe o tempo de uso de um item. |
 | RF04 | Alertas | O sistema deve permitir que alertas automáticos sejam enviados antes, durante e após o prazo. |
-| RF05 | Referência de durabilidade de peças | O sistema deve manter uma referência de durabilidade das peças/itens, em quilometragem e/ou tempo, associada ao veículo e ao item cadastrado, para apoiar os alertas de manutenção (RF03, RF04). A origem exata dessa referência será definida em etapa posterior do projeto. |
+| RF05 | Referência de durabilidade de peças | O sistema deve manter uma referência de durabilidade das peças/itens, em quilometragem e/ou tempo, associada ao modelo do veículo e ao tipo de peça/item cadastrado, para apoiar o cálculo dos alertas de manutenção (RF03, RF04, RF21). A origem exata dessa referência será definida em etapa posterior do projeto. |
 | RF06 | Históricos de manutenções | O sistema deve permitir que o usuário visualize os históricos de manutenções. |
 | RF07 | Cadastro de veículos | O sistema deve permitir o cadastro de veículos. |
 | RF08 | Inativar veículos | O sistema deve permitir que o usuário inative veículos, mantendo o histórico associado (sem exclusão definitiva). |
 | RF09 | Inativar itens | O sistema deve permitir que o usuário inative itens, mantendo o histórico associado (sem exclusão definitiva). |
-| RF10 | Cadastro de procedimentos | O sistema deve permitir que o usuário cadastre procedimentos pendentes. |
+| RF10 | Registro de manutenções pendentes | O sistema deve permitir que o usuário registre manutenções ainda não executadas, que servirão de base para os alertas de pendência, diferenciando-as das manutenções já realizadas (RF20). |
 | RF11 | Históricos de problemas | O sistema deve permitir que o usuário visualize os históricos de problemas com o veículo. |
 | RF12 | Contratação de plano | O sistema deve permitir que o usuário escolha e contrate um dos planos (Free, Premium ou Frota — RN01). |
 | RF13 | Gerenciamento de assinatura | O sistema deve permitir que o usuário faça upgrade, downgrade ou cancelamento do plano contratado, e consulte o status da assinatura (RN02). |
@@ -26,6 +26,9 @@ Este documento consolida a Engenharia de Requisitos do projeto: requisitos funci
 | RF16 | Agendamento em oficina parceira | O sistema deve permitir que o usuário agende um serviço de manutenção em uma oficina parceira sugerida ou de sua escolha (RN03). |
 | RF17 | Registro de comissão | O sistema deve registrar a comissão devida à PreventCar quando um agendamento sugerido é confirmado e o serviço concluído dentro da plataforma (RN04). |
 | RF18 | Programa de indicação | O sistema deve permitir que usuários do plano Premium indiquem novos usuários e tenham o benefício correspondente aplicado à sua conta (RN07). |
+| RF19 | Autenticação de usuário | O sistema deve permitir que usuários e administradores realizem login, complementando o cadastro de usuários (RF01). |
+| RF20 | Registro de manutenção executada | O sistema deve permitir que o usuário registre as manutenções efetivamente realizadas em um veículo, alimentando o histórico de manutenções (RF06). |
+| RF21 | Registro de quilometragem | O sistema deve permitir que o usuário registre e atualize a quilometragem atual do veículo, servindo de insumo para o cálculo de durabilidade em quilometragem (RF03, RF05). |
 
 ## Requisitos Não Funcionais
 
@@ -34,9 +37,10 @@ Este documento consolida a Engenharia de Requisitos do projeto: requisitos funci
 | RNF01 | Segurança | O sistema deve armazenar senhas e dados sensíveis de usuários/veículos de forma segura, seguindo boas práticas de proteção de credenciais (o mecanismo específico de armazenamento será definido na etapa de arquitetura). |
 | RNF02 | Usabilidade e responsividade | A interface deve ser responsiva, com suporte a partir de resoluções de 360px de largura (smartphones comuns), e compatível com as versões mais recentes dos navegadores/apps mais usados no Brasil (Chrome e Safari mobile). |
 | RNF03 | Desempenho | Consultas aos históricos (RF06/RF11) devem carregar em menos de 2 segundos. |
-| RNF04 | Disponibilidade | O sistema deve estar disponível 99% do tempo para consulta de alertas (RF04). |
+| RNF04 | Disponibilidade | O sistema deve estar disponível 99% do tempo (mensurado mensalmente) para consulta de alertas (RF04). |
 | RNF05 | Confiabilidade | Backup diário para garantir que históricos de manutenção nunca sejam perdidos. |
 | RNF06 | Integridade | As informações de durabilidade (RF05) devem ser atualizadas via fontes confiáveis. |
+| RNF07 | Acessibilidade | A interface deve atender ao contraste mínimo AA (4.5:1 para texto normal), com área de toque mínima de 44x44px em elementos interativos e foco visível em toda a navegação. |
 
 ## Regras de Negócio
 
@@ -56,22 +60,23 @@ O modelo de negócio do PreventCar é híbrido: assinatura recorrente para motor
 
 Incluído no escopo do projeto:
 
-- Cadastro de usuários, veículos e itens/peças a serem monitorados.
-- Registro do tempo de uso dos itens cadastrados e cálculo da durabilidade estimada.
+- Cadastro de usuários, veículos e itens/peças a serem monitorados, com autenticação de acesso.
+- Registro do tempo de uso dos itens cadastrados e cálculo da durabilidade estimada (em quilometragem e/ou tempo).
 - Emissão de alertas automáticos e de confirmação relacionados às manutenções pendentes.
-- Histórico de manutenções e de problemas de cada veículo (registro cronológico, itens próximos do limite de durabilidade, sugestão de oficinas parceiras).
+- Registro de manutenções executadas e pendentes, e de problemas de cada veículo (registro cronológico, itens próximos do limite de durabilidade, sugestão de oficinas parceiras).
 - Contratação e gerenciamento de planos de assinatura (Free, Premium, Frota).
 - Cadastro, aprovação e avaliação de oficinas parceiras; agendamento de serviços e registro de comissão.
 - Programa de indicação para usuários Premium.
-- Painel administrativo para gerenciamento de usuários, procedimentos, oficinas parceiras e durabilidade de peças.
+- Painel administrativo para gerenciamento de usuários, manutenções, oficinas parceiras e durabilidade de peças.
 
 ## Pendências
 
 - Matriz de rastreabilidade completa entre requisitos funcionais e regras de negócio (versão inicial já incluída na tabela de Regras de Negócio acima).
-- Atualizar [CASOS_DE_USO.md](./CASOS_DE_USO.md) com casos de uso para RF12–RF18 (planos, oficinas parceiras, agendamento, comissão e indicação) — ainda cobrem apenas RF01–RF11.
 - Diagrama de casos de uso de análise.
 - Modelo de domínio (diagrama de classes) e modelo ER.
 - Diagramas de atividades, sequência e máquina de estados.
 - Definir, na etapa de arquitetura, o mecanismo concreto de armazenamento seguro de credenciais (RNF01).
+- Funcionalidades previstas no sitemap ainda sem RF correspondente nesta iteração: recuperação de senha, registro de problema e exportação de histórico em PDF/CSV.
+- Atualizar as referências cruzadas em [SITEMAP_FLUXOS.md](./SITEMAP_FLUXOS.md), que ainda listam apenas RF01–RF11.
 
 Ver especificação detalhada dos casos de uso em [CASOS_DE_USO.md](./CASOS_DE_USO.md).

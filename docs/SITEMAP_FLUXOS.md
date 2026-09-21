@@ -126,6 +126,6 @@ Os artefatos apresentados atendem aos entregáveis definidos para a **SP2**:
 
 ## 5. Referências Cruzadas
 
-- [Requisitos Funcionais e Regras de Negócio](./REQUISITOS.md) — RF01, RF02, RF03, RF04, RF05, RF06, RF07, RF08, RF09, RF10, RF11
+- [Requisitos Funcionais e Regras de Negócio](./REQUISITOS.md) — RF01, RF02, RF03, RF04, RF05, RF06, RF07, RF08, RF09, RF10, RF11, RF19, RF20, RF21
 - [Casos de Uso](./CASOS_DE_USO.md) — UC01, UC02, UC03, UC04, UC05, UC06, UC07, UC08, UC09, UC10, UC11, UC12, UC13
 - [README](../README.md) — Visão geral do projeto
