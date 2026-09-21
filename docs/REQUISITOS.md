@@ -12,7 +12,7 @@ Este documento consolida a Engenharia de Requisitos do projeto: requisitos funci
 | RF02 | Cadastro de itens | O sistema deve permitir o cadastro de itens. |
 | RF03 | Informar tempo de uso do item | O sistema deve permitir que o usuário informe o tempo de uso de um item. |
 | RF04 | Alertas | O sistema deve permitir que alertas automáticos sejam enviados antes, durante e após o prazo. |
-| RF05 | Referência de durabilidade de peças | O sistema deve manter uma referência de durabilidade das peças/itens, em quilometragem e/ou tempo, associada ao modelo do veículo e ao tipo de peça/item cadastrado, para apoiar o cálculo dos alertas de manutenção (RF03, RF04, RF21). A origem exata dessa referência será definida em etapa posterior do projeto. |
+| RF05 | Referência de durabilidade de peças | O sistema deve manter uma referência de durabilidade das peças/itens, em quilometragem e/ou tempo, associada ao veículo e ao item cadastrado, para apoiar o cálculo dos alertas de manutenção (RF03, RF04, RF21). A origem exata dessa referência será definida em etapa posterior do projeto. |
 | RF06 | Históricos de manutenções | O sistema deve permitir que o usuário visualize os históricos de manutenções. |
 | RF07 | Cadastro de veículos | O sistema deve permitir o cadastro de veículos. |
 | RF08 | Inativar veículos | O sistema deve permitir que o usuário inative veículos, mantendo o histórico associado (sem exclusão definitiva). |
@@ -40,7 +40,7 @@ Este documento consolida a Engenharia de Requisitos do projeto: requisitos funci
 | RNF04 | Disponibilidade | O sistema deve estar disponível 99% do tempo (mensurado mensalmente) para consulta de alertas (RF04). |
 | RNF05 | Confiabilidade | Backup diário para garantir que históricos de manutenção nunca sejam perdidos. |
 | RNF06 | Integridade | As informações de durabilidade (RF05) devem ser atualizadas via fontes confiáveis. |
-| RNF07 | Acessibilidade | A interface deve atender ao contraste mínimo AA (4.5:1 para texto normal), com área de toque mínima de 44x44px em elementos interativos e foco visível em toda a navegação. |
+| RNF07 | Acessibilidade | A interface deve atender ao contraste mínimo AA (4.5:1 para texto normal), com área de toque mínima de 44x44px em elementos interativos e foco visível em toda a navegação (RF19). |
 
 ## Regras de Negócio
 
