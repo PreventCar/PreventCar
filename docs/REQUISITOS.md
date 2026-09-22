@@ -77,6 +77,5 @@ Incluído no escopo do projeto:
 - Diagramas de atividades, sequência e máquina de estados.
 - Definir, na etapa de arquitetura, o mecanismo concreto de armazenamento seguro de credenciais (RNF01).
 - Funcionalidades previstas no sitemap ainda sem RF correspondente nesta iteração: recuperação de senha, registro de problema e exportação de histórico em PDF/CSV.
-- Atualizar as referências cruzadas em [SITEMAP_FLUXOS.md](./SITEMAP_FLUXOS.md), que ainda listam apenas RF01–RF11.
 
 Ver especificação detalhada dos casos de uso em [CASOS_DE_USO.md](./CASOS_DE_USO.md).
