@@ -1,0 +1,565 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "inter";
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background-color: #fff;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.09);
+}
+
+/* Estilos do logótipo e tipografia da marca */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #111827;
+}
+
+.nome__logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Estilos dos links centrais */
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #4b5563;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: #111827;
+}
+
+/* Agrupamento dos botões à direita */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.login-link {
+  text-decoration: none;
+  color: #4b5563;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: #111827;
+}
+
+/* Estilo do botão principal "Começar Grátis" */
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+/* Layout da Secção Principal */
+.container-principal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5%;
+  min-height: 80vh;
+}
+
+.container-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  
+}
+
+.container {
+  background-color: #1d4ed8;
+  min-height: 80vh;
+  padding: 2rem 5%;
+}
+
+/* Coluna da Esquerda (Texto) */
+.container-content {
+  flex: 1;
+  max-width: 50%;
+  padding-right: 2rem;
+}
+
+/* Tipografia do Título */
+.container-title {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: #111827;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+.h1-blue {
+  color: #2563eb;
+}
+
+.container-subtitle {
+  font-size: 1.1rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 90%;
+}
+
+/* Botões de Ação */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #f9fafb;
+}
+
+/* Coluna da Direita */
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.image-wrapper {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: block;
+}
+
+.icon-blue {
+  color: #2563eb;
+}
+
+.conteudo {
+  margin-top: 5%;
+}
+
+
+#h1-center{
+  text-align: center;
+}
+
+.h1-white {
+  color: #fff;
+  text-align: center;
+}
+
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+  gap: 40px;
+}
+
+.icon {
+  color: #2563EB;
+}
+
+.card {
+  width: 250px;
+  height: 350px;
+  border-radius: 20px;
+  border: 1px solid #f1f5f9;
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.65);
+  padding: 25px;
+  transition: background 0.2s ease;
+}
+
+.card:hover{
+  background-color: #ccc;
+  border: 1px solid #ccc ;
+}
+
+.card h1{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.card span {
+  color: #111827;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.p-card{
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+.container-title-center{
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: #111827;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.cartao-imagem{
+  background-color: #111827;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5%;
+  min-height: 80vh;
+  border-radius: 25px;
+}
+
+.cartao-imagem h1{
+  color: white;
+}
+
+.features-section {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.feature-card {
+    background-color: #111827; /* Fundo azul escuro/preto */
+    border-radius: 20px;
+    display: flex;
+    max-width: 1100px;
+    width: 100%;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.feature-content {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feature-content h2 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.feature-content p {
+    color: #9CA3AF;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.feature-list {
+    list-style: none;
+}
+
+.feature-list li {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.check-icon {
+    color: #10B981; /* Cor verde para o check */
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.feature-image-wrapper {
+    flex: 1;
+    padding: 40px 40px 40px 0;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* ================================
+   SEÇÃO DE PREÇOS (FUNDO AZUL)
+   ================================ */
+.pricing-section {
+    background-color: #2563EB; /* Azul vibrante */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.pricing-title {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.price-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 40px 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+
+/* Estilo específico do Card Pro (do meio) */
+.price-card.pro-card {
+    background-color: #344265; /* Fundo azul acinzentado escuro */
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: scale(1.02); /* Dá um leve destaque ao card central */
+}
+
+.price-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.currency {
+    font-size: 20px;
+    margin-top: 8px;
+    margin-right: 2px;
+}
+
+.period {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6B7280;
+    align-self: flex-end;
+    margin-bottom: 12px;
+    margin-left: 5px;
+}
+
+.pro-card .period {
+    color: #9CA3AF;
+}
+
+.price-list {
+    list-style: none;
+    margin-bottom: 40px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.price-list li {
+    font-size: 13px;
+    color: #6B7280;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+/* Adicionando os bullets (pontinhos) à lista de preços */
+.price-list li::before {
+    content: "•";
+    color: #D1D5DB;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.pro-card .price-list li {
+    color: #D1D5DB;
+}
+
+.pro-card .price-list li::before {
+    color: #6B7280;
+}
+
+.btn {
+    background-color: #374151; /* Cinza escuro */
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #1F2937;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    flex-wrap: wrap; 
+}
+
+/* Marca e Logo */
+.footer-brand {
+    flex: 1;
+    max-width: 300px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.brand-logo svg {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0F172A; /* Cor escura próxima ao preto */
+}
+
+.brand-slogan {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #64748B; /* Cinza azulado (slate) */
+}
+
+/* Links do Rodapé */
+.footer-links-wrapper {
+    display: flex;
+    gap: 120px; /* Espaço largo entre Produto e Suporte */
+}
+
+.footer-column h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 18px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 14px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #64748B;
+    font-size: 13px;
+    transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+    color: #0A42D2; /* Efeito hover azul escuro */
+}
+
+/* Borda inferior e Copyright */
+.footer-bottom {
+    border-top: 1px solid #E2E8F0; /* Linha de divisão cinza clara */
+    padding-top: 30px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #64748B;
+}
+
+.site-footer {
+    background-color: #F8FAFC; /* Fundo cinza/azulado bem claro, matching image */
+    padding: 60px 20px 30px 20px;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
