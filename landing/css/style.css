@@ -373,7 +373,7 @@
 .price-card {
     background-color: #ffffff;
     border-radius: 8px;
-    padding: 40px 30px;
+    padding: 30px 50px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -399,7 +399,7 @@
     font-weight: 700;
     margin-bottom: 30px;
     display: flex;
-    justify-content: center;
+    /* justify-content: ; */
     align-items: flex-start;
 }
 
@@ -494,7 +494,7 @@
     margin-bottom: 12px;
 }
 
-.brand-logo svg {
+.brand-logo img {
     margin-right: 8px;
     width: 24px;
     height: 24px;
