@@ -52,6 +52,7 @@ Projeto em fase de **engenharia de requisitos e modelagem** (casos de uso, model
 - [CASOS_DE_USO.md](docs/CASOS_DE_USO.md) — atores e especificação dos casos de uso.
 - [REQUISITOS.md](docs/REQUISITOS.md) — requisitos funcionais, não funcionais e regras de negócio.
 - [IDENTIDADE_VISUAL.md](docs/IDENTIDADE_VISUAL.md) — paleta de cores, tipografia e padrões de componentes.
+- [Wireframes](https://excalidraw.com/#json=IHM0CG_BXCpYTbgz5fb1N,FiLSBD-OuSPMFqy9LNNEjQ) — estrutura inicial das telas e fluxos da aplicação.
 
 ## Equipe
 

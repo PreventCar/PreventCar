@@ -4,6 +4,10 @@ Este documento define a base visual do PreventCar: paleta de cores, tipografia, 
 
 ![Logo PreventCar](assets/logo.jpg)
 
+## Wireframes
+
+Os wireframes de referência do PreventCar estão disponíveis no [Excalidraw](https://excalidraw.com/#json=IHM0CG_BXCpYTbgz5fb1N,FiLSBD-OuSPMFqy9LNNEjQ).
+
 ## 1. Personalidade da marca
 
 O público do PreventCar mistura motoristas comuns, motoristas de aplicativo, gestores de frota e mecânicos usando o celular no meio do trabalho (RNF02). A identidade visual parte de três princípios:
