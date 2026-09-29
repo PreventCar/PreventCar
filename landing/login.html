@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>PreventCar | Login</title>
+</head>
+
+<body>
+    <!-- Antiga div "container" renomeada para "login-container" -->
+    <div class="login-container">
+        <div class="left-panel">
+            <div class="branding">
+                <h1>PreventCar</h1>
+                <p>A maneira inteligente de<br>cuidar do seu veículo</p>
+            </div>
+            <div class="illustration">
+                <div class="car-wrapper">
+                    <i class="fa-solid fa-gear floating-icon icon-1"></i>
+                    <i class="fa-solid fa-plug floating-icon icon-2"></i>
+                    <i class="fa-solid fa-car-battery floating-icon icon-3"></i>
+                    <i class="fa-solid fa-circle-exclamation floating-icon icon-4"></i>
+                    <i class="fa-solid fa-wrench floating-icon icon-5"></i>
+                    <i class="fa-solid fa-oil-can floating-icon icon-6"></i>
+
+                    <img src="/landing/images/carroLogin.png" alt="Ilustração do Carro PreventCar" class="blue-car">
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="login-card">
+                <div class="logo">
+                    <img src="images/logo.png" alt="" srcset="">
+                    <h2>Prevent<span>Car</span></h2>
+                </div>
+
+                <div class="welcome-text">
+                    <h3>Seja bem-vindo</h3>
+                    <p>Faça login para continuar</p>
+                </div>
+
+                <form action="#">
+                    <div class="input-group">
+                        <label for="email">E-mail</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Senha</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" placeholder="Digite sua senha" required>
+                            <i class="fa-regular fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <label class="remember-me">
+                            <input type="checkbox" checked>
+                            Lembrar de mim
+                        </label>
+                        <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn-login">Entrar</button>
+                </form>
+
+                <div class="signup-link">
+                    <p>Não possui conta? <a href="#">Cadastre-se</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
