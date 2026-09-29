@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>PreventCar | Login</title>
+    <title>PreventCar | Cadastro</title>
 </head>
 
 <body>
-    <div class="login-container">
+    <div class="login-container register-container">
         <div class="left-panel">
             <div class="branding">
                 <h1>PreventCar</h1>
@@ -32,23 +32,31 @@
         </div>
 
         <div class="right-panel">
-            <div class="login-card">
+            <div class="login-card register-card">
                 <div class="logo">
-                    <img src="images/logo.png" alt="" srcset="">
+                    <img src="images/logo.png" alt="Logo PreventCar">
                     <h2>Prevent<span>Car</span></h2>
                 </div>
 
                 <div class="welcome-text">
                     <h3>Seja bem-vindo</h3>
-                    <p>Faça login para continuar</p>
+                    <p>Preencha seus dados para continuar</p>
                 </div>
 
                 <form action="#">
                     <div class="input-group">
+                        <label for="full-name">Nome completo</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="full-name" name="full-name" placeholder="Digite seu nome completo" autocomplete="name" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
                         <label for="email">E-mail</label>
                         <div class="input-wrapper">
                             <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
                         </div>
                     </div>
 
@@ -56,24 +64,30 @@
                         <label for="password">Senha</label>
                         <div class="input-wrapper">
                             <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="password" placeholder="Digite sua senha" required>
+                            <input type="password" id="password" name="password" placeholder="Mínimo de 8 caracteres" autocomplete="new-password" minlength="8" required>
                             <i class="fa-regular fa-eye toggle-password"></i>
                         </div>
                     </div>
 
-                    <div class="form-actions">
-                        <label class="remember-me">
-                            <input type="checkbox" checked>
-                            Lembrar de mim
-                        </label>
-                        <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+                    <div class="input-group">
+                        <label for="confirm-password">Confirmar senha</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme sua senha" autocomplete="new-password" minlength="8" required>
+                            <i class="fa-regular fa-eye toggle-password"></i>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn-login">Entrar</button>
+                    <label class="terms-check" for="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <span>Li e aceito os <a href="#">Termos de Serviço</a> e a <a href="#">Política de Privacidade</a>.</span>
+                    </label>
+
+                    <button type="submit" class="btn-login">Criar conta</button>
                 </form>
 
                 <div class="signup-link">
-                    <p>Não possui conta? <a href="cadastro.html">Cadastre-se</a></p>
+                    <p>Já possui cadastro? <a href="login.html">Faça login</a></p>
                 </div>
             </div>
         </div>
