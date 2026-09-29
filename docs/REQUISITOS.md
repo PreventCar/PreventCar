@@ -1,6 +1,6 @@
 # Requisitos — PreventCar
 
-Este documento consolida a Engenharia de Requisitos do projeto: requisitos funcionais, requisitos não funcionais e regras de negócio, levantados por meio de entrevistas semiestruturadas e sessões de brainstorming com os stakeholders.
+Este documento consolida a Engenharia de Requisitos do projeto: requisitos funcionais, requisitos não funcionais e regras de negócio.
 
 > **Revisão SP1:** este documento incorpora a devolutiva do professor de PI — padronização de nomenclatura (RF08/RF09), RF05 mais concreto, RNFs mensuráveis (RNF01/RNF02) e novos RFs para cobrir as regras de negócio que ainda não tinham requisito funcional correspondente.
 
@@ -44,7 +44,7 @@ Este documento consolida a Engenharia de Requisitos do projeto: requisitos funci
 
 ## Regras de Negócio
 
-O modelo de negócio do PreventCar é híbrido: assinatura recorrente para motoristas e frotas, combinada com comissão sobre agendamentos concluídos em oficinas parceiras. As regras abaixo traduzem esse modelo em restrições que o sistema deve respeitar, e cada uma agora tem pelo menos um RF correspondente (ver coluna "RF relacionado").
+O modelo de negócio do PreventCar é híbrido: assinatura recorrente para motoristas e frotas, combinada com comissão sobre agendamentos concluídos em oficinas parceiras. As regras abaixo traduzem esse modelo em restrições que o sistema deve respeitar, e cada uma agora tem pelo menos um RF correspondente.
 
 | Código | Regra | RF relacionado |
 |---|---|---|
