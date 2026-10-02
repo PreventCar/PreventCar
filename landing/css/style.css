@@ -7,17 +7,20 @@
   font-family: "inter", sans-serif;
 }
 
-/* ================================
-   PÁGINA PRINCIPAL (INDEX)
-   ================================ */
+.header {
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.0), rgba(18,18,18,0.5)),url(../images/carro.jpeg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 5%;
-  background-color: #fff;
-  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.09);
 }
 
 .navbar-logo {
@@ -25,12 +28,29 @@
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: #111827;
+  color: #FFF;
 }
 
 .nome__logo {
   font-size: 1.25rem;
   font-weight: 700;
+}
+
+.hamburger {
+  display: none;
+  background: transparent;
+  border: 1.5px solid #555;
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger .line {
+  width: 22px;
+  height: 1.5px;
+  background-color: #ccc;
 }
 
 .navbar-links {
@@ -41,7 +61,7 @@
 
 .navbar-links a {
   text-decoration: none;
-  color: #4b5563;
+  color: #fff;
   font-size: 0.9rem;
   font-weight: 600;
   transition: color 0.2s ease;
@@ -59,7 +79,7 @@
 
 .login-link {
   text-decoration: none;
-  color: #4b5563;
+  color: #fff;
   font-size: 0.9rem;
   font-weight: 600;
   transition: color 0.2s ease;
@@ -70,7 +90,8 @@
 }
 
 .btn-primary {
-  background-color: #2563eb;
+  background-color: transparent;
+  border: 1px solid #fff;
   color: #ffffff;
   text-decoration: none;
   padding: 0.6rem 1.25rem;
@@ -81,13 +102,12 @@
 }
 
 .btn-primary:hover {
-  background-color: #1d4ed8;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: #111;
 }
 
 .container-principal {
-  /* background-image: url(../images/carro.jpeg);
-  background-position: center;
-  background-size: cover; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -101,10 +121,9 @@
   }
 }
 
-/* Antigo .container da página inicial alterado para evitar conflito */
 .info-container {
-  background-color: #1d4ed8;
-  min-height: 80vh;
+  background-color: #121212;
+  min-height: 70vh;
   padding: 2rem 5%;
 }
 
@@ -126,12 +145,17 @@
   color: #2563eb;
 }
 
+.h1-white {
+  color: #eeeeee;
+}
+
 .container-subtitle {
   font-size: 1.1rem;
-  color: #6b7280;
+  color: #eee;
   line-height: 1.6;
   margin-bottom: 2.5rem;
-  max-width: 90%;
+  max-width: 80%;
+  text-align: justify;
 }
 
 .actions {
@@ -192,57 +216,65 @@
   text-align: center;
 }
 
-.h1-white {
-  color: #fff;
-  text-align: center;
-}
-
 .container-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
   padding-top: 60px;
-  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .icon {
   color: #2563eb;
+  font-size: 24px;
 }
 
 .card {
-  width: 250px;
-  height: 350px;
-  border-radius: 20px;
-  border: 1px solid #f1f5f9;
-  background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.65);
-  padding: 25px;
-  transition: background 0.2s ease;
+  background-color: #16181c;
+  border-radius: 16px;
+  border: 1px solid #2a2d35;
+  padding: 32px 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .card:hover {
-  background-color: #ccc;
-  border: 1px solid #ccc;
+  transform: translateY(-5px);
+  border-color: #2563eb;
+  background-color: #1c1f26;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .card h1 {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 0;
+  margin-bottom: 24px;
+  background-color: rgba(37, 99, 235, 0.1);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
 }
 
 .card span {
-  color: #111827;
-  font-size: 1.5em;
-  font-weight: 600;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: block;
 }
 
 .p-card {
-  margin-top: 10px;
-  font-size: 1.1rem;
-  color: #6b7280;
+  margin-top: 0;
+  font-size: 1rem;
+  color: #a1a1aa;
   line-height: 1.6;
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .container-title-center {
@@ -255,13 +287,14 @@
 }
 
 .features-section {
-  padding: 60px 20px;
+  padding: 150px 100px;
   display: flex;
   justify-content: center;
+  background-color: #f8f8f8;
 }
 
 .feature-card {
-  background-color: #111827;
+  background-color: #121212;
   border-radius: 20px;
   display: flex;
   max-width: 1100px;
@@ -326,7 +359,7 @@
 }
 
 .pricing-section {
-  background-color: #2563eb;
+  background-color: #0d1117;
   padding: 80px 20px;
   text-align: center;
 }
@@ -343,7 +376,7 @@
   justify-content: center;
   align-items: stretch;
   gap: 20px;
-  max-width: 1000px;
+  max-width: 100vh;
   margin: 0 auto;
 }
 
@@ -358,7 +391,7 @@
 }
 
 .price-card.pro-card {
-  background-color: #344265;
+  background-color: #212121;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transform: scale(1.02);
@@ -405,7 +438,7 @@
 }
 
 .price-list li {
-  font-size: 13px;
+  font-size: 1.1rem;
   color: #6b7280;
   margin-bottom: 12px;
   display: flex;
@@ -415,7 +448,7 @@
 .price-list li::before {
   content: "•";
   color: #d1d5db;
-  font-size: 18px;
+  font-size: 1.1rem;
   margin-right: 8px;
 }
 
@@ -428,9 +461,9 @@
 }
 
 .btn {
-  background-color: #374151;
+  background-color: #1c1f26;
   color: #ffffff;
-  border: none;
+  border: 1px solid #2a2d35;
   padding: 14px;
   border-radius: 6px;
   font-size: 14px;
@@ -441,13 +474,14 @@
 }
 
 .btn:hover {
-  background-color: #1f2937;
+  border-color: #2563eb;
+  background-color: #1c1f26;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .site-footer {
   background-color: #f8fafc;
   padding: 60px 20px 30px 20px;
-  font-family: "inter", Helvetica, Arial, sans-serif;
 }
 
 .footer-container {
@@ -535,11 +569,6 @@
   color: #64748b;
 }
 
-/* ================================
-   PÁGINA DE LOGIN
-   ================================ */
-
-/* Antigo .container da página de login isolado */
 .login-container {
   display: flex;
   width: 100%;
@@ -603,10 +632,8 @@
   .icon-4 { font-size: 2.6rem; }
   .icon-5 { font-size: 2.4rem; }
   .icon-6 { font-size: 2.6rem; }
-
 }
 
-/* O carro em si */
 .blue-car {
   width: 100%;
   height: auto;
@@ -615,7 +642,6 @@
   z-index: 2;
 }
 
-/* Base para todos os ícones flutuantes */
 .floating-icon {
   position: absolute;
   color: rgba(255, 255, 255, 0.95);
@@ -623,13 +649,13 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Posições individuais e tamanhos baseados na sua imagem de referência */
 .icon-1 {
   top: 30%;
   left: 0%;
   font-size: 2rem;
   animation-delay: 0s;
 }
+
 .icon-2 {
   top: 15%;
   left: 18%;
@@ -637,18 +663,21 @@
   animation-delay: 0.5s;
   rotate: 30deg;
 }
+
 .icon-3 {
   top: 8%;
   left: 38%;
   font-size: 2.2rem;
   animation-delay: 1s;
 }
+
 .icon-4 {
   top: 13%;
   left: 62%;
   font-size: 1.8rem;
   animation-delay: 1.5s;
 }
+
 .icon-5 {
   top: 25%;
   left: 82%;
@@ -656,6 +685,7 @@
   animation-delay: 0.2s;
   rotate: -45deg;
 }
+
 .icon-6 {
   top: 40%;
   right: -5%;
@@ -663,7 +693,6 @@
   animation-delay: 0.8s;
 }
 
-/* Animação suave de flutuação */
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -721,7 +750,6 @@
 .logo h2 {
   font-size: 2.2rem;
   font-weight: 700;
-  font-family: "inter";
   color: #111;
 }
 
@@ -918,10 +946,6 @@
   text-decoration: underline;
 }
 
-/* ================================
-   RESPONSIVIDADE (MEDIA QUERIES)
-   ================================ */
-
 @media (max-width: 992px) {
   .login-container {
     flex-direction: column;
@@ -1016,5 +1040,85 @@
 
   .register-card {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .navbar-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .navbar-actions {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .navbar-links.active, .navbar-actions.active {
+    display: flex;
+  }
+  .container-principal {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 3rem;
+  }
+  .container-content {
+    max-width: 100%;
+    padding-right: 0;
+  }
+  .container-title {
+    font-size: 2.5rem;
+  }
+  .container-subtitle {
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto 2.5rem auto;
+  }
+  .actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .feature-card {
+    flex-direction: column;
+  }
+  .feature-content {
+    padding: 2rem;
+  }
+  .feature-image-wrapper {
+    padding: 0 2rem 2rem 2rem;
+  }
+  .features-section {
+    padding: 4rem 1.5rem;
+  }
+  .pricing-container {
+    flex-direction: column;
+  }
+  .price-card.pro-card {
+    transform: scale(1);
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer-links-wrapper {
+    gap: 2rem;
+    flex-direction: column;
+  }
+  .container-title-center {
+    font-size: 2.5rem;
   }
 }

@@ -10,47 +10,55 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="#" class="navbar-logo">
-            <img src="images/logo.svg" alt="">
-            <span class="nome__logo">PreventCar</span>
-        </a>
+    <div class="header">
+        <nav class="navbar">
+            <a href="#" class="navbar-logo">
+                <img src="images/logo.svg" alt="">
+                <span class="nome__logo">PreventCar</span>
+            </a>
 
-        <ul class="navbar-links">
-            <li><a href="#recursos">Recursos</a></li>
-            <li><a href="#beneficios">Benefícios</a></li>
-            <li><a href="#precos">Preços</a></li>
-        </ul>
+            <button class="hamburger" id="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
 
-        <div class="navbar-actions">
-            <a href="login.html" class="login-link">Entrar</a>
-            <a href="cadastro.html" class="btn-primary">Começar Grátis</a>
-        </div>
-    </nav>
+            <ul class="navbar-links" id="navbar-links">
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#precos">Preços</a></li>
+            </ul>
 
-    <div class="container-principal">
-        <div class="container-content">
-            <h1 class="container-title">
-                Sua frota sob controle, <br> <span class="h1-blue">sem</span>
-                <span class="h1-blue">estresse.</span>
-            </h1>
-
-            <p class="container-subtitle">
-                A plataforma definitiva para gerenciar manutenções, gastos e o histórico completo do seu veículo. Tudo
-                em um só lugar.
-            </p>
-
-            <div class="actions">
-                <a href="cadastro.html" class="btn-primary">Criar conta gratuita</a>
-                <button class="btn-secondary">
-                    Ver Demo
-                </button>
+            <div class="navbar-actions" id="navbar-actions">
+                <a href="login.html" class="login-link">Entrar</a>
+                <a href="cadastro.html" class="btn-primary">Começar Grátis</a>
             </div>
-        </div>
+        </nav>
 
-        <div class="hero-visual">
-            <div class="image-wrapper">
-                <img src="images/carro.jpg" alt="Carro desportivo na estrada" class="main-image">
+        <div class="container-principal">
+            <div class="container-content">
+                <h1 class="container-title">
+                    Sua frota sob controle, <br> <span class="h1-white">sem</span>
+                    <span class="h1-white">estresse.</span>
+                </h1>
+
+                <p class="container-subtitle">
+                    A plataforma definitiva para gerenciar manutenções, gastos e o histórico completo do seu veículo.
+                    Tudo
+                    em um só lugar.
+                </p>
+
+                <div class="actions">
+                    <a href="cadastro.html" class="btn-primary">Criar conta gratuita</a>
+                    <button class="btn-secondary">
+                        Ver Demo
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="image-wrapper">
+                </div>
             </div>
         </div>
     </div>
@@ -64,19 +72,22 @@
                 <div class="card">
                     <h1><i class="fa-solid fa-wrench fa-lg icon"></i></h1>
                     <span>Alertas de Manutenção</span>
-                    <p class="p-card">Seja avisado sobre trocas de óleo, filtros e revisões antes que se tornem um problema.</p>
+                    <p class="p-card">Seja avisado sobre trocas de óleo, filtros e revisões antes que se tornem um
+                        problema.</p>
                 </div>
 
                 <div class="card">
                     <h1><i class="fa-solid fa-folder-open fa-lg icon"></i></h1>
                     <span>Controle Financeiro</span>
-                    <p class="p-card">Acompanhe cada centavo gasto com combustível, seguro e reparos com gráficos claros.</p>
+                    <p class="p-card">Acompanhe cada centavo gasto com combustível, seguro e reparos com gráficos
+                        claros.</p>
                 </div>
 
                 <div class="card">
                     <h1><i class="fa-solid fa-chart-pie fa-lg icon"></i></h1>
                     <span>Histórico Digital</span>
-                    <p class="p-card">Valorize seu carro na revenda com um histórico de revisões completo e organizado.</p>
+                    <p class="p-card">Valorize seu carro na revenda com um histórico de revisões completo e organizado.
+                    </p>
                 </div>
 
                 <div class="card">
@@ -92,8 +103,9 @@
         <div class="feature-card">
             <div class="feature-content">
                 <h2>Visualize o futuro da sua gestão automotiva</h2>
-                <p>Nossa interface foi desenhada para ser simples, rápida e intuitiva. Gaste menos tempo preenchendo planilhas e mais tempo dirigindo.</p>
-                
+                <p>Nossa interface foi desenhada para ser simples, rápida e intuitiva. Gaste menos tempo preenchendo
+                    planilhas e mais tempo dirigindo.</p>
+
                 <ul class="feature-list">
                     <li><span class="check-icon">✔</span> Modo Escuro disponível</li>
                     <li><span class="check-icon">✔</span> Sincronização em tempo real</li>
@@ -101,14 +113,15 @@
                 </ul>
             </div>
             <div class="feature-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard do sistema" class="dashboard-img">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Dashboard do sistema" class="dashboard-img">
             </div>
         </div>
     </section>
 
     <section class="pricing-section">
         <h2 class="pricing-title">Planos transparentes para qualquer necessidade</h2>
-        
+
         <div class="pricing-container">
             <div class="price-card">
                 <h3>Grátis</h3>
@@ -116,11 +129,11 @@
                     <span class="currency">R$</span>0<span class="period">/ mês</span>
                 </div>
                 <ul class="price-list">
-                    <li>Cadastro de 1 veículo</li>
-                    <li>Acompanhamento</li>
-                    <li>Geração de relatório</li>
-                    <li>Histórico de manutenção</li>
-                    <li>Atualização em tempo real</li>
+                    <li>Cadastro de 1 veículo;</li>
+                    <li>Acompanhamento;</li>
+                    <li>Geração de relatório;</li>
+                    <li>Histórico de manutenção;</li>
+                    <li>Atualização em tempo real.</li>
                 </ul>
                 <button class="btn">Button</button>
             </div>
@@ -131,11 +144,11 @@
                     <span class="currency">R$</span>50<span class="period">/ mês</span>
                 </div>
                 <ul class="price-list">
-                    <li>Cadastro de 2 veículos</li>
-                    <li>Sugestão de mecânicas parceiras</li>
-                    <li>Desconto de mecânicas parceiras</li>
-                    <li>Histórico de manutenção detalhado</li>
-                    <li>Gerenciamento de calendário veiuclar</li>
+                    <li>Cadastro de 2 veículos;</li>
+                    <li>Sugestão de mecânicas parceiras;</li>
+                    <li>Desconto de mecânicas parceiras;</li>
+                    <li>Histórico de manutenção detalhado;</li>
+                    <li>Gerenciamento de calendário veiuclar.</li>
                 </ul>
                 <button class="btn">Button</button>
             </div>
@@ -146,11 +159,11 @@
                     <span class="currency">R$</span>300<span class="period">/ mês</span>
                 </div>
                 <ul class="price-list">
-                    <li>Cadastro de 200 veiculos</li>
-                    <li>Gerenciamento detalhado</li>
-                    <li>Acesso Multi-utilizador</li>
-                    <li>Relatórios Financeiros de Frota</li>
-                    <li>Suporte Técnico Prioritário (24/7)</li>
+                    <li>Cadastro de 200 veiculos;</li>
+                    <li>Gerenciamento detalhado;</li>
+                    <li>Acesso Multi-utilizador;</li>
+                    <li>Relatórios Financeiros de Frota;</li>
+                    <li>Suporte Técnico Prioritário (24/7).</li>
                 </ul>
                 <button class="btn">Button</button>
             </div>
@@ -167,7 +180,7 @@
                     </div>
                     <p class="brand-slogan">Cuidando do seu carro,<br>cuidando de você.</p>
                 </div>
-                
+
                 <div class="footer-links-wrapper">
                     <div class="footer-column">
                         <h4>Produto</h4>
@@ -177,7 +190,7 @@
                             <li><a href="#">Mobile App</a></li>
                         </ul>
                     </div>
-                    
+
                     <div class="footer-column">
                         <h4>Suporte</h4>
                         <ul>
@@ -188,7 +201,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>© 2026 PreventCar Software. Todos os direitos reservados.</p>
             </div>
@@ -196,6 +209,16 @@
     </footer>
 
     <script src="https://kit.fontawesome.com/fb9f429e20.js" crossorigin="anonymous"></script>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navbar-links');
+        const navActions = document.getElementById('navbar-actions');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navActions.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>
