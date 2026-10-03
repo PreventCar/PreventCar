@@ -1,0 +1,2 @@
+scholarly>=1.7.11,<2
+bibtexparser>=1.4,<2

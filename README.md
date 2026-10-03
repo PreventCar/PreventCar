@@ -48,10 +48,8 @@ Projeto em fase de **engenharia de requisitos e modelagem** (casos de uso, model
 
 ## Documentação
 
-- [SITEMAP_FLUXOS.md](docs/SITEMAP_FLUXOS.md) — mapa do site (sitemap) e principais fluxos de navegação.
-- [CASOS_DE_USO.md](docs/CASOS_DE_USO.md) — atores e especificação dos casos de uso.
-- [REQUISITOS.md](docs/REQUISITOS.md) — requisitos funcionais, não funcionais e regras de negócio.
-- [IDENTIDADE_VISUAL.md](docs/IDENTIDADE_VISUAL.md) — paleta de cores, tipografia e padrões de componentes.
+- [REVISAO_BIBLIOGRAFICA.md](docs/REVISAO_BIBLIOGRAFICA.md) — apoio bibliográfico, comparativo de trabalhos e palavras-chave.
+- [REVISAO_BIBLIOGRAFICA_2.md](docs/REVISAO_BIBLIOGRAFICA_2.md) — análise dos PDFs disponíveis, resultados e comparativo revisado.
 - [Wireframes](https://excalidraw.com/#json=IHM0CG_BXCpYTbgz5fb1N,FiLSBD-OuSPMFqy9LNNEjQ) — estrutura inicial das telas e fluxos da aplicação.
 
 ## Equipe
