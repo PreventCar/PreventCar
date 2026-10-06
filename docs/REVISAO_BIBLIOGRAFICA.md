@@ -1,7 +1,7 @@
 # Revisão bibliográfica do PreventCar
 
 **Data da apuração:** 1º de outubro de 2026  
-**Fontes:** PDFs disponíveis em `research/pdfs`, localizados a partir de buscas no Google Scholar.
+**Fontes:** PDFs disponíveis em `research/pdfs`, localizados a partir de buscas no Google Scholar. (não disponível no repositório para evitar problemas de direitos autorais.)
 
 Este texto resume a literatura consultada para a introdução, a justificativa e
 o posicionamento do PreventCar. A análise é exploratória: não houve protocolo
@@ -93,7 +93,3 @@ maintenance`, `preventive maintenance` e `fleet management`.
 - SILVA, Igor Soares dos Santos; SILVA, Guilherme Rodrigues Veloso da. **Aplicativo de alerta e gerenciamento de revisões e manutenções veiculares**. Universidade Santa Cecília - UNISANTA. Disponível em: [CONIC-Semesp](https://www.conic-semesp.org.br/anais/files/2018/trabalho-1000000187.pdf).
 - SOLANKI, V. K.; DHALL, R. **An IoT based predictive connected car maintenance approach**. 2017. Disponível em: [repositório institucional](https://reunir.unir.net/items/61a37918-e1d0-4d13-bc39-d3d96483c7ba).
 - VILHALBA, E. C. **SensorNet AutoCare: dispositivo IoT para prevenção da manutenção de veículos**. 2024. Disponível em: [UNIPAMPA](https://repositorio.unipampa.edu.br/bitstreams/1acc2b9f-f578-47d8-a14a-ccc418ee5d43/download).
-
-Antes da entrega, confira e formate as referências conforme as normas da FATEC
-e a ABNT NBR 6023. Resultados de protótipos exigem validação adicional antes
-de serem generalizados para outros veículos.
