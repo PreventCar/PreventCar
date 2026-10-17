@@ -1,0 +1,541 @@
+/* ============================================================
+   PreventCar — auth (login.html / cadastro.html)
+   Layout de duas colunas, painel de marca, formulário e
+   responsivos. Depende de global.css (tokens, base, tipografia,
+   botões).
+   ============================================================ */
+
+/* ==================================================================
+   1. LAYOUT — duas colunas
+   ================================================================== */
+.login-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+  color: var(--paper);
+  background-image: linear-gradient(rgba(18, 18, 18, .55),
+      rgba(18, 18, 18, .75)), url(../images/fundoLogin.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.branding {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.branding h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(2.6rem, 5vw, 4.3rem);
+  font-stretch: 118%;
+  color: var(--paper);
+}
+
+.branding p {
+  color: rgba(255, 255, 255, .85);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.illustration img {
+  max-width: 100%;
+  height: auto;
+}
+
+.car-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 550px;
+  margin-top: 2rem;
+}
+
+.blue-car {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+}
+
+.floating-icon {
+  position: absolute;
+  z-index: 1;
+  color: rgba(255, 255, 255, .95);
+  animation: float 3s var(--ease) infinite;
+}
+
+.icon-1 {
+  top: 30%;
+  left: 0;
+  font-size: 2rem;
+  animation-delay: 0s;
+}
+
+.icon-2 {
+  top: 15%;
+  left: 18%;
+  font-size: 1.6rem;
+  animation-delay: .5s;
+  rotate: 30deg;
+}
+
+.icon-3 {
+  top: 8%;
+  left: 38%;
+  font-size: 2.2rem;
+  animation-delay: 1s;
+}
+
+.icon-4 {
+  top: 13%;
+  left: 62%;
+  font-size: 1.8rem;
+  animation-delay: 1.5s;
+}
+
+.icon-5 {
+  top: 25%;
+  left: 82%;
+  font-size: 1.6rem;
+  animation-delay: .2s;
+  rotate: -45deg;
+}
+
+.icon-6 {
+  top: 40%;
+  right: -5%;
+  font-size: 1.8rem;
+  animation-delay: .8s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--paper-alt);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  background: #fff;
+  border-radius: var(--r-lg);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .12);
+}
+
+.logo {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.logo img {
+  width: 90px;
+  margin: 0 auto;
+}
+
+.logo h2 {
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-stretch: 112%;
+  color: var(--ink);
+}
+
+.logo h2 span {
+  color: var(--cold);
+}
+
+.welcome-text {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.welcome-text h3 {
+  margin-bottom: .3rem;
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-stretch: 104%;
+  font-weight: 600;
+}
+
+.welcome-text p {
+  color: var(--ink-2);
+  font-size: .9rem;
+}
+
+/* ==================================================================
+   2. FORMULÁRIO
+   ================================================================== */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: .5rem;
+  color: var(--ink-2);
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper i {
+  position: absolute;
+  color: var(--ink-2);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.input-wrapper i:first-child {
+  left: 15px;
+}
+
+.input-wrapper .toggle-password {
+  left: auto;
+  right: 15px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 14px 15px 14px 45px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: .95rem;
+  background-color: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  outline: none;
+  transition: border-color .3s var(--ease), background-color .3s var(--ease),
+    box-shadow .3s var(--ease);
+}
+
+.input-wrapper input::placeholder {
+  color: rgba(107, 114, 128, .85);
+}
+
+.input-wrapper input:focus {
+  background-color: #fff;
+  border-color: var(--cold);
+}
+
+.input-wrapper input:focus-visible {
+  outline: 2px solid var(--cold);
+  outline-offset: 2px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: .85rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--cold);
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: var(--cold);
+  font-weight: 500;
+  transition: color .25s var(--ease);
+}
+
+.forgot-password:hover,
+.forgot-password:focus-visible {
+  color: var(--cold);
+  text-decoration: underline;
+}
+
+.forgot-password:focus-visible {
+  outline: 2px solid var(--cold);
+  outline-offset: 3px;
+}
+
+.signup-link {
+  margin-top: 2rem;
+  color: var(--ink);
+  font-size: .9rem;
+  text-align: center;
+}
+
+.signup-link a {
+  color: var(--cold);
+  font-weight: 600;
+  transition: color .25s var(--ease);
+}
+
+.signup-link a:hover,
+.signup-link a:focus-visible {
+  text-decoration: underline;
+}
+
+.signup-link a:focus-visible {
+  outline: 2px solid var(--cold);
+  outline-offset: 3px;
+}
+
+.register-card {
+  max-width: 500px;
+}
+
+.register-card .welcome-text {
+  margin-bottom: 1.5rem;
+}
+
+.register-card .input-group {
+  margin-bottom: 1rem;
+}
+
+.register-card .input-wrapper input {
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.register-card .input-wrapper input[type="password"] {
+  padding-right: 45px;
+}
+
+.terms-check {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  margin: .25rem 0 1.5rem;
+  color: var(--ink);
+  font-size: .75rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.terms-check input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  margin-top: 1px;
+  accent-color: var(--cold);
+  cursor: pointer;
+}
+
+.terms-check a {
+  color: var(--cold);
+  transition: color .25s var(--ease);
+}
+
+.terms-check a:hover,
+.terms-check a:focus-visible {
+  text-decoration: underline;
+}
+
+.terms-check a:focus-visible {
+  outline: 2px solid var(--cold);
+  outline-offset: 3px;
+}
+
+/* ==================================================================
+   3. RESPONSIVO (auth)
+   ================================================================== */
+@media (min-width: 1400px) {
+  .car-wrapper {
+    max-width: 750px;
+  }
+
+  .icon-1 { font-size: 3rem; }
+  .icon-2 { font-size: 2.4rem; }
+  .icon-3 { font-size: 3.2rem; }
+  .icon-4 { font-size: 2.6rem; }
+  .icon-5 { font-size: 2.4rem; }
+  .icon-6 { font-size: 2.6rem; }
+}
+
+@media (min-width: 1440px) {
+  .login-card {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 992px) {
+  .login-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .left-panel {
+    width: 100%;
+    padding: 3rem 1.5rem;
+  }
+
+  .right-panel {
+    padding: 3rem 1.5rem;
+    background-color: #fff;
+  }
+
+  .login-card {
+    padding: 2rem 1.5rem;
+    box-shadow: none;
+    border: 1px solid var(--line);
+  }
+
+  .register-container .right-panel {
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 993px) and (max-height: 800px) {
+  .left-panel {
+    padding: 1.5rem;
+  }
+
+  .branding {
+    margin-bottom: 1.75rem;
+  }
+
+  .branding h1 {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+  }
+
+  .car-wrapper {
+    max-width: 460px;
+    margin-top: 1rem;
+  }
+
+  .right-panel {
+    padding: 1.25rem 2rem;
+  }
+
+  .login-card {
+    padding: 1.5rem;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  .logo img {
+    width: 68px;
+  }
+
+  .logo h2 {
+    font-size: 1.8rem;
+  }
+
+  .welcome-text {
+    margin-bottom: 1.25rem;
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+  }
+
+  .input-wrapper input {
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+
+  .form-actions {
+    margin-bottom: 1.25rem;
+  }
+
+  .signup-link {
+    margin-top: 1.25rem;
+  }
+
+  .register-card {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .register-card .logo {
+    margin-bottom: .75rem;
+  }
+
+  .register-card .logo img {
+    width: 64px;
+  }
+
+  .register-card .welcome-text {
+    margin-bottom: 1rem;
+  }
+
+  .register-card .input-group {
+    margin-bottom: .75rem;
+  }
+
+  .register-card .input-wrapper input {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .register-card .terms-check {
+    margin-bottom: 1rem;
+  }
+
+  .register-card .signup-link {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .branding h1 {
+    font-size: 2.5rem;
+  }
+
+  .branding p {
+    font-size: 1.2rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+
+  .register-card {
+    max-width: 100%;
+  }
+}

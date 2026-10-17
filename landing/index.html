@@ -4,42 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
     <title>PreventCar | Home</title>
 </head>
 
 <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <nav class="navbar site-header" id="site-header">
+        <a href="#" class="navbar-logo">
+            <img src="images/logo.svg" alt="">
+            <span class="nome__logo">PreventCar</span>
+        </a>
+
+        <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbar-links">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <ul class="navbar-links" id="navbar-links">
+            <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#precos">Preços</a></li>
+        </ul>
+
+        <div class="navbar-actions" id="navbar-actions">
+            <a href="login.html" class="login-link">Entrar</a>
+            <a href="cadastro.html" class="btn-primary">Começar Grátis</a>
+        </div>
+    </nav>
+
     <div class="header">
-        <nav class="navbar">
-            <a href="#" class="navbar-logo">
-                <img src="images/logo.svg" alt="">
-                <span class="nome__logo">PreventCar</span>
-            </a>
-
-            <button class="hamburger" id="hamburger">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
-            </button>
-
-            <ul class="navbar-links" id="navbar-links">
-                <li><a href="#recursos">Recursos</a></li>
-                <li><a href="#beneficios">Benefícios</a></li>
-                <li><a href="#precos">Preços</a></li>
-            </ul>
-
-            <div class="navbar-actions" id="navbar-actions">
-                <a href="login.html" class="login-link">Entrar</a>
-                <a href="cadastro.html" class="btn-primary">Começar Grátis</a>
-            </div>
-        </nav>
-
         <div class="container-principal">
             <div class="container-content">
                 <h1 class="container-title">
-                    Sua frota sob controle, <br> <span class="h1-white">sem</span>
-                    <span class="h1-white">estresse.</span>
+                    Sua frota sob controle, <br> <em>sem estresse.</em>
                 </h1>
 
                 <p class="container-subtitle">
@@ -55,19 +60,15 @@
                     </button>
                 </div>
             </div>
-
-            <div class="hero-visual">
-                <div class="image-wrapper">
-                </div>
-            </div>
         </div>
     </div>
 
-    <div class="info-container">
+    <div class="info-container" id="recursos">
         <div class="conteudo">
             <div class="container-title-center">
                 <span class="h1-white" id="h1-center"> Tudo o que você precisa</span>
             </div>
+
             <div class="container-cards">
                 <div class="card">
                     <h1><i class="fa-solid fa-wrench fa-lg icon"></i></h1>
@@ -99,7 +100,7 @@
         </div>
     </div>
 
-    <section class="features-section">
+    <section class="features-section" id="beneficios">
         <div class="feature-card">
             <div class="feature-content">
                 <h2>Visualize o futuro da sua gestão automotiva</h2>
@@ -119,7 +120,7 @@
         </div>
     </section>
 
-    <section class="pricing-section">
+    <section class="pricing-section" id="precos">
         <h2 class="pricing-title">Planos transparentes para qualquer necessidade</h2>
 
         <div class="pricing-container">
@@ -135,7 +136,7 @@
                     <li>Histórico de manutenção;</li>
                     <li>Atualização em tempo real.</li>
                 </ul>
-                <button class="btn">Button</button>
+                <button class="btn">Começar grátis</button>
             </div>
 
             <div class="price-card pro-card">
@@ -150,7 +151,7 @@
                     <li>Histórico de manutenção detalhado;</li>
                     <li>Gerenciamento de calendário veiuclar.</li>
                 </ul>
-                <button class="btn">Button</button>
+                <button class="btn">Assinar Pro</button>
             </div>
 
             <div class="price-card">
@@ -165,7 +166,7 @@
                     <li>Relatórios Financeiros de Frota;</li>
                     <li>Suporte Técnico Prioritário (24/7).</li>
                 </ul>
-                <button class="btn">Button</button>
+                <button class="btn">Falar com vendas</button>
             </div>
         </div>
     </section>
@@ -215,9 +216,16 @@
         const navActions = document.getElementById('navbar-actions');
 
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            const aberto = navLinks.classList.toggle('active');
             navActions.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', String(aberto));
         });
+
+        /* header ganha fundo ao rolar */
+        const header = document.getElementById('site-header');
+        const aoRolar = () => header.classList.toggle('stuck', window.scrollY > 12);
+        aoRolar();
+        window.addEventListener('scroll', aoRolar, { passive: true });
     </script>
 </body>
 

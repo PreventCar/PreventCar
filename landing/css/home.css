@@ -1,0 +1,778 @@
+/* ============================================================
+   PreventCar — home (index.html)
+   Header sticky, navegação, hero, recursos, features, pricing
+   e footer. Depende de global.css (tokens, base, tipografia,
+   botões).
+   ============================================================ */
+
+/* ------------------------------------------------------------------
+   1. HEADER STICKY — ganha fundo fosco ao rolar
+   ------------------------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin-bottom: calc(-1 * var(--header-h));
+  transition: background .35s var(--ease), border-color .35s var(--ease),
+    backdrop-filter .35s var(--ease);
+}
+
+.site-header.stuck {
+  background: rgba(255, 255, 255, .86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+/* ------------------------------------------------------------
+   2. NAVEGAÇÃO — sublinhado que entra e sai por lados diferentes
+   ------------------------------------------------------------ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem var(--pad);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--paper);
+  transition: color .3s var(--ease);
+}
+
+.navbar-logo img {
+  width: 40px;
+}
+
+.nome__logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  position: relative;
+  padding: .3em 0;
+  color: rgba(255, 255, 255, .82);
+  font-size: .9rem;
+  font-weight: 600;
+  transition: color .25s var(--ease);
+}
+
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1.5px;
+  width: 100%;
+  background: var(--cold-soft);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .4s var(--ease);
+}
+
+.navbar-links a:hover,
+.navbar-links a:focus-visible {
+  color: var(--paper);
+}
+
+.navbar-links a:hover::after,
+.navbar-links a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbar-links a:focus-visible {
+  outline: 2px solid var(--cold-soft);
+  outline-offset: 4px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.login-link {
+  color: var(--paper);
+  font-size: .9rem;
+  font-weight: 600;
+  transition: color .25s var(--ease);
+}
+
+.login-link:hover,
+.login-link:focus-visible {
+  color: var(--cold-soft);
+}
+
+.login-link:focus-visible {
+  outline: 2px solid var(--cold-soft);
+  outline-offset: 4px;
+}
+
+/* Sobre fundo escuro o contorno de foco precisa ser claro para contrastar */
+.site-header .btn-primary:focus-visible,
+.header .btn-primary:focus-visible,
+.header .btn-secondary:focus-visible {
+  outline-color: var(--paper);
+}
+
+/* Estado "stuck": links passam de claros para tinta sobre o fundo fosco */
+.site-header.stuck .navbar-logo,
+.site-header.stuck .login-link {
+  color: var(--ink);
+}
+
+.site-header.stuck .navbar-links a {
+  color: var(--ink-2);
+}
+
+.site-header.stuck .navbar-links a:hover,
+.site-header.stuck .navbar-links a:focus-visible {
+  color: var(--ink);
+}
+
+.site-header.stuck .navbar-links a::after {
+  background: var(--cold);
+}
+
+.site-header.stuck .login-link:hover,
+.site-header.stuck .login-link:focus-visible {
+  color: var(--cold-hover);
+}
+
+.site-header.stuck .hamburger {
+  border-color: var(--line);
+}
+
+.site-header.stuck .hamburger .line {
+  background-color: var(--ink);
+}
+
+.site-header.stuck .navbar-links a:focus-visible,
+.site-header.stuck .login-link:focus-visible,
+.site-header.stuck .hamburger:focus-visible {
+  outline-color: var(--cold);
+}
+
+/* Sobre o fundo claro do header preso, o CTA inverte para preto */
+.site-header.stuck .btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.site-header.stuck .btn-primary::before {
+  background: var(--paper);
+}
+
+.site-header.stuck .btn-primary:hover {
+  color: var(--ink);
+}
+
+.site-header.stuck .btn-primary:focus-visible {
+  outline-color: var(--ink);
+}
+
+/* ------------------------------------------------------------
+   3. HAMBURGER
+   ------------------------------------------------------------ */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, .45);
+  border-radius: var(--r);
+  padding: 8px 10px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  transition: border-color .3s var(--ease);
+}
+
+.hamburger .line {
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--paper);
+  transition: background-color .3s var(--ease);
+}
+
+.hamburger:focus-visible {
+  outline: 2px solid var(--cold-soft);
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------
+   4. HERO
+   ------------------------------------------------------------ */
+.header {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: var(--header-h);
+  background-image: linear-gradient(90deg,
+      rgba(18, 18, 18, .86),
+      rgba(18, 18, 18, .48) 58%,
+      rgba(18, 18, 18, .18)),
+    url(../images/carro.jpeg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.container-principal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem var(--pad);
+  min-height: calc(100vh - var(--header-h));
+}
+
+.container-content {
+  flex: 1;
+  max-width: 52%;
+}
+
+.container-title {
+  color: var(--paper);
+  margin-bottom: 1.5rem;
+}
+
+.h1-white {
+  color: var(--paper);
+}
+
+.container-subtitle {
+  max-width: 34rem;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, .82);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------------
+   5. SEÇÃO ESCURA — recursos
+   ------------------------------------------------------------------ */
+.info-container {
+  background-color: var(--ink-deep);
+  padding: var(--section-pad) var(--pad);
+}
+
+.conteudo {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.container-title-center {
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-stretch: 108%;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.02;
+  color: var(--paper);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Cards de recurso */
+.container-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding-top: clamp(40px, 6vw, 64px);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 24px;
+  background-color: #16181C;
+  border: 1px solid #2A2D35;
+  border-radius: var(--r-lg);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1);
+  transition: transform .4s var(--ease), border-color .4s var(--ease),
+    background-color .4s var(--ease), box-shadow .4s var(--ease);
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-5px);
+  border-color: var(--cold);
+  background-color: #1C1F26;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .25);
+}
+
+.card h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 24px;
+  font-size: 1.35rem;
+  font-stretch: 100%;
+  background-color: rgba(37, 99, 235, .1);
+  border-radius: var(--r-lg);
+}
+
+.card .icon {
+  color: var(--cold);
+  font-size: 24px;
+}
+
+.card span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--paper);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.p-card {
+  color: rgba(255, 255, 255, .72);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------------
+   6. FEATURES
+   ------------------------------------------------------------------ */
+.features-section {
+  display: flex;
+  justify-content: center;
+  padding: var(--section-pad) var(--pad);
+  background-color: var(--paper-alt);
+}
+
+.feature-card {
+  display: flex;
+  max-width: 1100px;
+  width: 100%;
+  background-color: var(--ink-deep);
+  border-radius: var(--r-xl);
+  color: var(--paper);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+  overflow: hidden;
+}
+
+.feature-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px, 5vw, 60px);
+}
+
+.feature-content h2 {
+  margin-bottom: 20px;
+  color: var(--paper);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-stretch: 106%;
+}
+
+.feature-content p {
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, .72);
+  font-size: .95rem;
+  line-height: 1.6;
+}
+
+.feature-list {
+  list-style: none;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, .9);
+  font-size: .9rem;
+  font-weight: 600;
+  transition: transform .4s var(--ease);
+}
+
+.feature-list li:hover,
+.feature-list li:focus-within {
+  transform: translateX(4px);
+}
+
+.check-icon {
+  margin-right: 12px;
+  color: var(--cold);
+  font-size: 16px;
+}
+
+.feature-image-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 40px 40px 40px 0;
+}
+
+.dashboard-img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-lg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
+}
+
+/* ------------------------------------------------------------------
+   7. PRICING
+   ------------------------------------------------------------------ */
+.pricing-section {
+  padding: var(--section-pad) var(--pad);
+  background-color: var(--ink-deep);
+  text-align: center;
+}
+
+.pricing-title {
+  margin: 0 auto 60px;
+  max-width: 18em;
+  color: var(--paper);
+}
+
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.price-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px clamp(24px, 4vw, 50px);
+  background-color: #fff;
+  border-radius: var(--r-lg);
+  color: var(--ink);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+
+.price-card:hover,
+.price-card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, .35);
+}
+
+.price-card.pro-card {
+  background-color: #212121;
+  border: 1px solid rgba(255, 255, 255, .1);
+  color: var(--paper);
+  transform: scale(1.02);
+}
+
+.price-card.pro-card:hover,
+.price-card.pro-card:focus-within {
+  transform: scale(1.02) translateY(-5px);
+}
+
+.price-card h3 {
+  margin-bottom: 15px;
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-stretch: 104%;
+  letter-spacing: -.01em;
+}
+
+.price-card.pro-card h3 {
+  color: var(--paper);
+}
+
+.price {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-stretch: 112%;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+
+.currency {
+  margin-top: 8px;
+  margin-right: 2px;
+  font-size: 1.25rem;
+}
+
+.period {
+  align-self: flex-end;
+  margin-bottom: 12px;
+  margin-left: 5px;
+  color: var(--ink-2);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.pro-card .period {
+  color: rgba(255, 255, 255, .68);
+}
+
+.price-list {
+  flex-grow: 1;
+  margin-bottom: 40px;
+  list-style: none;
+  text-align: left;
+}
+
+.price-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  color: var(--ink-2);
+  font-size: 1rem;
+}
+
+.price-list li::before {
+  content: "•";
+  margin-right: 8px;
+  color: var(--cold);
+  font-size: 1.1rem;
+}
+
+.pro-card .price-list li {
+  color: rgba(255, 255, 255, .85);
+}
+
+.pro-card .price-list li::before {
+  color: var(--cold-soft);
+}
+
+/* Ghost dentro do cartão escuro */
+.pro-card .btn {
+  border-color: rgba(255, 255, 255, .28);
+  color: var(--paper);
+}
+
+.pro-card .btn::before {
+  background: var(--paper);
+}
+
+.pro-card .btn:hover {
+  color: var(--ink-deep);
+  border-color: var(--paper);
+}
+
+/* ------------------------------------------------------------------
+   8. FOOTER — micro-translações nas linhas
+   ------------------------------------------------------------------ */
+.site-footer {
+  padding: 60px var(--pad) 30px;
+  background-color: var(--paper-alt);
+  border-top: 1px solid var(--line);
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-brand {
+  flex: 1;
+  max-width: 300px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.brand-logo img {
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+.brand-name {
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.brand-slogan {
+  color: var(--ink-2);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+
+.footer-links-wrapper {
+  display: flex;
+  gap: 120px;
+}
+
+.footer-column h4 {
+  margin-bottom: 18px;
+  color: var(--ink);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 14px;
+}
+
+.footer-column ul li a {
+  display: inline-block;
+  color: var(--ink-2);
+  font-size: .85rem;
+  transition: color .25s var(--ease), transform .4s var(--ease);
+}
+
+.footer-column ul li a:hover,
+.footer-column ul li a:focus-visible {
+  color: var(--cold-hover);
+  transform: translateX(4px);
+}
+
+.footer-column ul li a:focus-visible {
+  outline: 2px solid var(--cold);
+  outline-offset: 3px;
+}
+
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid var(--line-soft);
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: var(--ink-2);
+  font-size: .75rem;
+}
+
+/* ==================================================================
+   9. RESPONSIVO (home)
+   ================================================================== */
+@media (min-width: 1400px) {
+  .container-principal {
+    min-height: calc(96vh - var(--header-h));
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-h: 76px;
+  }
+
+  .navbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links,
+  .navbar-actions {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .navbar-links {
+    margin-top: 2rem;
+  }
+
+  .navbar-actions {
+    margin-top: 1.5rem;
+  }
+
+  .navbar-links.active,
+  .navbar-actions.active {
+    display: flex;
+  }
+
+  .site-header.stuck {
+    background: rgba(255, 255, 255, .96);
+  }
+
+  .container-principal {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 3rem;
+  }
+
+  .container-content {
+    max-width: 100%;
+  }
+
+  .container-subtitle {
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .feature-card {
+    flex-direction: column;
+  }
+
+  .feature-image-wrapper {
+    padding: 0 2rem 2rem;
+  }
+
+  .pricing-container {
+    flex-direction: column;
+    max-width: 520px;
+  }
+
+  .price-card.pro-card {
+    transform: scale(1);
+  }
+
+  .price-card.pro-card:hover,
+  .price-card.pro-card:focus-within {
+    transform: translateY(-5px);
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .footer-links-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
