@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
     <title>PreventCar | Home</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
 </head>
 
 <body>
@@ -30,6 +36,9 @@
             </ul>
 
             <div class="navbar-actions" id="navbar-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Mudar tema">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
                 <a href="login.html" class="login-link">Entrar</a>
                 <a href="cadastro.html" class="btn-primary">Começar Grátis</a>
             </div>
@@ -44,8 +53,7 @@
 
                 <p class="container-subtitle">
                     A plataforma definitiva para gerenciar manutenções, gastos e o histórico completo do seu veículo.
-                    Tudo
-                    em um só lugar.
+                    Tudo em um só lugar.
                 </p>
 
                 <div class="actions">
@@ -63,34 +71,34 @@
         </div>
     </div>
 
-    <div class="info-container">
+    <div class="info-container" id="recursos">
         <div class="conteudo">
-            <div class="container-title-center">
+            <div class="container-title-center hidden fade-in">
                 <span class="h1-white" id="h1-center"> Tudo o que você precisa</span>
             </div>
             <div class="container-cards">
-                <div class="card">
+                <div class="card hidden slide-up delay-1">
                     <h1><i class="fa-solid fa-wrench fa-lg icon"></i></h1>
                     <span>Alertas de Manutenção</span>
                     <p class="p-card">Seja avisado sobre trocas de óleo, filtros e revisões antes que se tornem um
                         problema.</p>
                 </div>
 
-                <div class="card">
+                <div class="card hidden slide-up delay-2">
                     <h1><i class="fa-solid fa-folder-open fa-lg icon"></i></h1>
                     <span>Controle Financeiro</span>
                     <p class="p-card">Acompanhe cada centavo gasto com combustível, seguro e reparos com gráficos
                         claros.</p>
                 </div>
 
-                <div class="card">
+                <div class="card hidden slide-up delay-3">
                     <h1><i class="fa-solid fa-chart-pie fa-lg icon"></i></h1>
                     <span>Histórico Digital</span>
                     <p class="p-card">Valorize seu carro na revenda com um histórico de revisões completo e organizado.
                     </p>
                 </div>
 
-                <div class="card">
+                <div class="card hidden slide-up delay-4">
                     <h1><i class="fa-solid fa-calendar-check fa-lg icon"></i></h1>
                     <span>Agendamento Online</span>
                     <p class="p-card">Marque serviços diretamente com oficinas parceiras através da plataforma.</p>
@@ -99,8 +107,8 @@
         </div>
     </div>
 
-    <section class="features-section">
-        <div class="feature-card">
+    <section class="features-section" id="beneficios">
+        <div class="feature-card hidden slide-up">
             <div class="feature-content">
                 <h2>Visualize o futuro da sua gestão automotiva</h2>
                 <p>Nossa interface foi desenhada para ser simples, rápida e intuitiva. Gaste menos tempo preenchendo
@@ -119,11 +127,11 @@
         </div>
     </section>
 
-    <section class="pricing-section">
-        <h2 class="pricing-title">Planos transparentes para qualquer necessidade</h2>
+    <section class="pricing-section" id="precos">
+        <h2 class="pricing-title hidden fade-in">Planos transparentes para qualquer necessidade</h2>
 
         <div class="pricing-container">
-            <div class="price-card">
+            <div class="price-card hidden slide-up delay-1">
                 <h3>Grátis</h3>
                 <div class="price">
                     <span class="currency">R$</span>0<span class="period">/ mês</span>
@@ -138,7 +146,7 @@
                 <button class="btn">Button</button>
             </div>
 
-            <div class="price-card pro-card">
+            <div class="price-card pro-card hidden slide-up delay-2">
                 <h3>Pro</h3>
                 <div class="price">
                     <span class="currency">R$</span>50<span class="period">/ mês</span>
@@ -148,12 +156,12 @@
                     <li>Sugestão de mecânicas parceiras;</li>
                     <li>Desconto de mecânicas parceiras;</li>
                     <li>Histórico de manutenção detalhado;</li>
-                    <li>Gerenciamento de calendário veiuclar.</li>
+                    <li>Gerenciamento de calendário veicular.</li>
                 </ul>
                 <button class="btn">Button</button>
             </div>
 
-            <div class="price-card">
+            <div class="price-card hidden slide-up delay-3">
                 <h3>Empresarial</h3>
                 <div class="price">
                     <span class="currency">R$</span>300<span class="period">/ mês</span>
@@ -217,6 +225,38 @@
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             navActions.classList.toggle('active');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        if (document.documentElement.classList.contains('light-mode')) {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('light-mode');
+
+            if (document.documentElement.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
         });
     </script>
 </body>

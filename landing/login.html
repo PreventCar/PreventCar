@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,17 @@
     <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>PreventCar | Login</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
 </head>
 
 <body>
     <div class="login-container">
+        <!-- Painel Esquerdo (Ilustração) -->
         <div class="left-panel">
             <div class="branding">
                 <h1>PreventCar</h1>
@@ -25,22 +32,29 @@
                     <i class="fa-solid fa-circle-exclamation floating-icon icon-4"></i>
                     <i class="fa-solid fa-wrench floating-icon icon-5"></i>
                     <i class="fa-solid fa-oil-can floating-icon icon-6"></i>
-
                     <img src="images/carroLogin.png" alt="Ilustração do Carro PreventCar" class="blue-car">
                 </div>
             </div>
         </div>
 
+        <!-- Painel Direito (Formulário) -->
         <div class="right-panel">
+            <button id="theme-toggle" class="theme-toggle login-theme-btn" aria-label="Mudar tema"
+                style="position: absolute; top: 20px; right: 20px;">
+                <i class="fa-solid fa-sun"></i>
+            </button>
             <div class="login-card">
+
+                <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+
                 <div class="logo">
-                    <img src="images/logo.png" alt="" srcset="">
+                    <img src="images/logo.png" alt="Logo PreventCar">
                     <h2>Prevent<span>Car</span></h2>
                 </div>
 
                 <div class="welcome-text">
-                    <h3>Seja bem-vindo</h3>
-                    <p>Faça login para continuar</p>
+                    <h3>Seja bem-vindo de volta!</h3>
+                    <p>Faça login para acessar sua garagem</p>
                 </div>
 
                 <form action="#">
@@ -57,7 +71,7 @@
                         <div class="input-wrapper">
                             <i class="fa-solid fa-lock"></i>
                             <input type="password" id="password" placeholder="Digite sua senha" required>
-                            <i class="fa-regular fa-eye toggle-password"></i>
+                            <i class="fa-regular fa-eye toggle-password" id="togglePassword"></i>
                         </div>
                     </div>
 
@@ -69,7 +83,15 @@
                         <a href="#" class="forgot-password">Esqueceu sua senha?</a>
                     </div>
 
-                    <button type="submit" class="btn-login">Entrar</button>
+                    <button type="submit" class="btn-login">Entrar na Plataforma</button>
+
+                    <div class="divider">
+                        <span>ou</span>
+                    </div>
+
+                    <button type="button" class="btn-google">
+                        <i class="fa-brands fa-google"></i> Entrar com o Google
+                    </button>
                 </form>
 
                 <div class="signup-link">
@@ -78,6 +100,48 @@
             </div>
         </div>
     </div>
+
+    <!-- Script para o Olhinho da Senha Funcionar -->
+    <script>
+        // 1. Lógica do olhinho da senha
+        const togglePasswords = document.querySelectorAll('.toggle-password');
+        
+        togglePasswords.forEach(icon => {
+            icon.addEventListener('click', function () {
+                const input = this.previousElementSibling;
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                
+                input.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+
+        // 2. Lógica do Botão de Tema (Modo Claro / Escuro)
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        // Só executa se o botão realmente existir na página
+        if (themeToggleBtn) {
+            const themeIcon = themeToggleBtn.querySelector('i');
+
+            // Ajusta o ícone inicial com base no tema atual
+            if (document.documentElement.classList.contains('light-mode')) {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('light-mode');
+                
+                if (document.documentElement.classList.contains('light-mode')) {
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
