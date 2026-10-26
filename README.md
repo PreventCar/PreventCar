@@ -48,6 +48,8 @@ Projeto em fase de **engenharia de requisitos e modelagem** (casos de uso, model
 
 ## Documentação
 
+- [REVISAO_BIBLIOGRAFICA.md](docs/REVISAO_BIBLIOGRAFICA.md) — análise bibliográfica das fontes fornecidas e relação com o PreventCar.
+- [BASE_ENGETEC.md](docs/BASE_ENGETEC.md) — estrutura-base do artigo para adaptação ao modelo EnGeTec.
 - [SITEMAP_FLUXOS.md](docs/SITEMAP_FLUXOS.md) — mapa do site (sitemap) e principais fluxos de navegação.
 - [CASOS_DE_USO.md](docs/CASOS_DE_USO.md) — atores e especificação dos casos de uso.
 - [REQUISITOS.md](docs/REQUISITOS.md) — requisitos funcionais, não funcionais e regras de negócio.
