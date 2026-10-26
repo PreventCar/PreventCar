@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Painel PreventCar: acompanhe veículos, manutenções, alertas e gastos em um só lugar.">
+    <title>PreventCar - Dashboard</title>
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('preventcar:theme');
+                var light = saved ? saved === 'light' : window.matchMedia('(prefers-color-scheme: light)').matches;
+                if (light) document.documentElement.classList.add('light-mode');
+            } catch (e) {}
+        })();
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+    <div class="app-container">
+
+        <!-- Overlay para mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">
+                    <img src="images/logo.svg" alt="PreventCar Logo">
+                </div>
+                <span class="logo-text">PreventCar</span>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Menu principal">
+                <a href="#" class="nav-item active" aria-current="page">
+                    <i class="ph ph-squares-four" aria-hidden="true"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-car-profile" aria-hidden="true"></i>
+                    <span>Meus Veículos</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-wrench" aria-hidden="true"></i>
+                    <span>Manutenções</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-calendar-blank" aria-hidden="true"></i>
+                    <span>Agendamentos</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i>
+                    <span>Histórico</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="images/foto-do-perfil.png" alt="" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Plano Pro</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="conteudo">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
+                        <i class="ph ph-list" aria-hidden="true"></i>
+                    </button>
+                    <div class="welcome-section">
+                        <h1>Olá, João Silva</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <!-- Pesquisa na esquerda dos ícones -->
+                    <div class="search-box">
+                        <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+                        <input type="search" id="searchInput" placeholder="Buscar manutenção..." aria-label="Buscar nas próximas manutenções" autocomplete="off">
+                    </div>
+
+                    <button class="theme-toggle-dash" id="themeToggle" aria-label="Alternar tema claro/escuro" aria-pressed="false">
+                        <i class="ph ph-sun sun-icon" aria-hidden="true"></i>
+                        <i class="ph ph-moon moon-icon" aria-hidden="true"></i>
+                    </button>
+
+                    <!-- Notificações -->
+                    <div class="notif-wrapper">
+                        <button class="notifications" id="notifBtn" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" aria-controls="notifPanel">
+                            <i class="ph ph-bell" aria-hidden="true"></i>
+                            <span class="badge" id="notifBadge" aria-hidden="true">0</span>
+                        </button>
+
+                        <section class="notif-panel" id="notifPanel" aria-label="Painel de notificações" hidden>
+                            <header class="notif-header">
+                                <h2>Notificações</h2>
+                                <button type="button" class="notif-link" id="notifMarkAll">
+                                    <i class="ph ph-checks" aria-hidden="true"></i> Marcar todas
+                                </button>
+                            </header>
+
+                            <ul class="notif-list" id="notifList"></ul>
+
+                            <footer class="notif-footer">
+                                <button type="button" class="notif-link danger" id="notifClear">
+                                    <i class="ph ph-trash" aria-hidden="true"></i> Limpar
+                                </button>
+                            </footer>
+                        </section>
+                    </div>
+
+                    <div class="topbar-avatar">
+                        <img src="images/foto-do-perfil.png" alt="Foto de perfil">
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+
+                <div class="metrics-row">
+                    <div class="metric-card">
+                        <div class="metric-icon blue">
+                            <i class="ph ph-car" aria-hidden="true"></i>
+                        </div>
+                        <div class="metric-content">
+                            <span>Veículos cadastrados</span>
+                            <h2>2</h2>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon green">
+                            <i class="ph ph-wrench" aria-hidden="true"></i>
+                        </div>
+                        <div class="metric-content">
+                            <span>Manutenções no mês</span>
+                            <h2>5</h2>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon orange">
+                            <i class="ph ph-calendar-check" aria-hidden="true"></i>
+                        </div>
+                        <div class="metric-content">
+                            <span>Próximas revisões</span>
+                            <h2>3</h2>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon purple">
+                            <i class="ph ph-chart-line-up" aria-hidden="true"></i>
+                        </div>
+                        <div class="metric-content">
+                            <span>Gasto no ano</span>
+                            <h2 id="yearTotal">R$ 4.280</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="middle-row">
+
+                    <div class="dash-card main-card">
+                        <h3>Próximas Manutenções</h3>
+                        <div class="maintenance-list">
+                            <div class="maintenance-item">
+                                <div class="car-thumb">
+                                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200&auto=format&fit=crop&q=80" alt="" loading="lazy">
+                                </div>
+                                <div class="maintenance-info">
+                                    <h4>Troca de óleo</h4>
+                                    <span>06 abr. 2026</span>
+                                </div>
+                                <span class="status-badge urgency">Urgência</span>
+                            </div>
+
+                            <div class="maintenance-item">
+                                <div class="car-thumb">
+                                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=200&auto=format&fit=crop&q=80" alt="" loading="lazy">
+                                </div>
+                                <div class="maintenance-info">
+                                    <h4>Alinhamento</h4>
+                                    <span>08 abr. 2026</span>
+                                </div>
+                                <span class="status-badge warning">Atenção</span>
+                            </div>
+
+                            <div class="maintenance-item">
+                                <div class="car-thumb">
+                                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=200&auto=format&fit=crop&q=80" alt="" loading="lazy">
+                                </div>
+                                <div class="maintenance-info">
+                                    <h4>Revisão 20.000km</h4>
+                                    <span>26 abr. 2026</span>
+                                </div>
+                                <span class="status-badge normal">Agendado</span>
+                            </div>
+                        </div>
+                        <p class="empty-state" id="maintenanceEmpty" hidden>Nenhuma manutenção encontrada.</p>
+                    </div>
+
+                    <div class="dash-card alerts-card">
+                        <h3>Alertas</h3>
+                        <div class="alerts-list">
+                            <div class="alert-item red">
+                                <i class="ph ph-warning-circle" aria-hidden="true"></i>
+                                <span>Pneu careca</span>
+                            </div>
+                            <div class="alert-item red">
+                                <i class="ph ph-drop" aria-hidden="true"></i>
+                                <span>Óleo vencido</span>
+                            </div>
+                            <div class="alert-item orange">
+                                <i class="ph ph-file-text" aria-hidden="true"></i>
+                                <span>IPVA próximo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-card chart-card">
+                    <div class="chart-header">
+                        <h3>Gastos mensais</h3>
+                        <span class="chart-total" id="chartTotal"></span>
+                    </div>
+                    
+                    <!-- Adicionado wrapper-scroll para resolver o problema no mobile -->
+                    <div class="chart-wrapper-scroll">
+                        <div class="chart-container" role="group" aria-label="Gráfico de gastos mensais">
+                            <div class="chart-plot" id="chartPlot"></div>
+                            <div class="chart-labels" id="chartLabels"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
