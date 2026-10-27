@@ -1,12 +1,16 @@
+// --- MENU MOBILE ---
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navbar-links');
 const navActions = document.getElementById('navbar-actions');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    navActions.classList.toggle('active');
-});
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        navActions.classList.toggle('active');
+    });
+}
 
+// --- ANIMAÇÃO DE ROLAGEM (Intersection Observer) ---
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -20,21 +24,26 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 
+// --- MODO ESCURO / CLARO ---
 const themeToggleBtn = document.getElementById('theme-toggle');
-const themeIcon = themeToggleBtn.querySelector('i');
 
-if (document.documentElement.classList.contains('light-mode')) {
-    themeIcon.classList.replace('fa-sun', 'fa-moon');
-}
+if (themeToggleBtn) {
+    const themeIcon = themeToggleBtn.querySelector('i');
 
-themeToggleBtn.addEventListener('click', () => {
-    document.documentElement.classList.toggle('light-mode');
-
+    // Verifica se já carregou no modo claro e ajusta o ícone
     if (document.documentElement.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
         themeIcon.classList.replace('fa-sun', 'fa-moon');
-    } else {
-        localStorage.setItem('theme', 'dark');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
-});
+
+    themeToggleBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('light-mode');
+
+        if (document.documentElement.classList.contains('light-mode')) {
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        } else {
+            localStorage.setItem('theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+    });
+}
