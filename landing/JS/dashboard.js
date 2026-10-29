@@ -1,69 +1,9 @@
-const MOBILE_BREAKPOINT = 768;
-
-/* ---------- Utilidades ---------- */
-function safeGet(key) {
-    try { return localStorage.getItem(key); } catch { return null; }
-}
-function safeSet(key, value) {
-    try { localStorage.setItem(key, value); } catch { /* storage indisponível */ }
-}
-
-/* ---------- Tema (Dark / Light) ---------- */
-const html = document.documentElement;
-const themeToggle = document.getElementById('themeToggle');
-
-function applyTheme(theme) {
-    html.classList.toggle('light-mode', theme === 'light');
-    themeToggle.setAttribute('aria-pressed', theme === 'light');
-}
-
-// Lê a preferência salva; se não houver, usa a do sistema
-const savedTheme = safeGet('preventcar:theme');
-const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-applyTheme(savedTheme || (prefersLight ? 'light' : 'dark'));
-
-themeToggle.addEventListener('click', () => {
-    const next = html.classList.contains('light-mode') ? 'dark' : 'light';
-    applyTheme(next);
-    safeSet('preventcar:theme', next);
-});
-
-/* ---------- Sidebar mobile ---------- */
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const sidebar = document.getElementById('sidebar');
-const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-function setSidebar(open) {
-    sidebar.classList.toggle('active', open);
-    sidebarOverlay.classList.toggle('active', open);
-    mobileMenuBtn.setAttribute('aria-expanded', open);
-    document.body.classList.toggle('no-scroll', open);
-}
-
-mobileMenuBtn.addEventListener('click', () => setSidebar(!sidebar.classList.contains('active')));
-sidebarOverlay.addEventListener('click', () => setSidebar(false));
-
-// Fecha a sidebar ao navegar e ao voltar para o desktop
-sidebar.querySelectorAll('.nav-item').forEach(link => {
-    link.addEventListener('click', () => {
-        sidebar.querySelectorAll('.nav-item').forEach(l => {
-            l.classList.remove('active');
-            l.removeAttribute('aria-current');
-        });
-        link.classList.add('active');
-        link.setAttribute('aria-current', 'page');
-        setSidebar(false);
-    });
-});
-window.addEventListener('resize', () => {
-    if (window.innerWidth > MOBILE_BREAKPOINT) setSidebar(false);
-});
+// Tema, sidebar (offcanvas) e dropdown ficam a cargo de theme.js e do Bootstrap.
 
 /* ---------- Notificações ---------- */
 const STORAGE_KEY = 'preventcar:notifications';
 
 const notifBtn = document.getElementById('notifBtn');
-const notifPanel = document.getElementById('notifPanel');
 const notifList = document.getElementById('notifList');
 const notifBadge = document.getElementById('notifBadge');
 const notifMarkAll = document.getElementById('notifMarkAll');
@@ -173,16 +113,8 @@ function renderNotifications() {
     });
 }
 
-function setNotifPanel(open) {
-    notifPanel.hidden = !open;
-    notifBtn.setAttribute('aria-expanded', open);
-    if (open) renderNotifications(); // atualiza os horários relativos
-}
-
-notifBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    setNotifPanel(notifPanel.hidden);
-});
+// Atualiza os horários relativos sempre que o dropdown abre
+notifBtn.addEventListener('show.bs.dropdown', renderNotifications);
 
 // Clique numa notificação: marca como lida
 notifList.addEventListener('click', e => {
@@ -206,19 +138,6 @@ notifClear.addEventListener('click', () => {
     notifications = [];
     saveNotifications();
     renderNotifications();
-});
-
-// Fechar ao clicar fora ou apertar Esc
-document.addEventListener('click', e => {
-    if (!notifPanel.hidden && !e.target.closest('.notif-wrapper')) setNotifPanel(false);
-});
-document.addEventListener('keydown', e => {
-    if (e.key !== 'Escape') return;
-    if (!notifPanel.hidden) {
-        setNotifPanel(false);
-        notifBtn.focus();
-    }
-    if (sidebar.classList.contains('active')) setSidebar(false);
 });
 
 renderNotifications();

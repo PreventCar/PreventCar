@@ -1,11 +1,176 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PreventCar | Manutenções</title><script src="https://unpkg.com/@phosphor-icons/web"></script><link rel="stylesheet" href="css/style.css"></head>
-<body class="dashboard-body"><div class="app-container"><div class="sidebar-overlay" id="sidebarOverlay"></div><aside class="sidebar" id="sidebar"><div><div class="sidebar-header"><div class="logo-icon"><img src="images/logo.svg" alt="PreventCar"></div><span class="logo-text">PreventCar</span></div><nav class="sidebar-nav"><a href="dashboard.html" class="nav-item"><i class="ph ph-squares-four"></i><span>Dashboard</span></a><a href="veiculos.html" class="nav-item"><i class="ph ph-car-profile"></i><span>Meus Veículos</span></a><a href="manutencoes.html" class="nav-item active"><i class="ph ph-wrench"></i><span>Manutenções</span></a><a href="agendamentos.html" class="nav-item"><i class="ph ph-calendar-blank"></i><span>Agendamentos</span></a><a href="historico.html" class="nav-item"><i class="ph ph-clock-counter-clockwise"></i><span>Histórico</span></a></nav></div><div class="sidebar-footer"><div class="user-profile"><img src="images/foto-do-perfil.png" class="user-avatar" alt=""><span class="user-name">João Silva</span></div></div></aside>
-<main class="main-content"><header class="topbar"><div class="topbar-left"><button class="mobile-menu-btn" id="mobileMenuBtn"><i class="ph ph-list"></i></button><div class="welcome-section"><h1>Manutenções</h1></div></div><div class="topbar-actions"><button class="theme-toggle-dash" id="themeToggle" aria-label="Alternar tema"><i class="ph ph-sun sun-icon"></i><i class="ph ph-moon moon-icon"></i></button><div class="topbar-avatar"><img src="images/foto-do-perfil.png" alt="Perfil"></div></div></header>
-<div class="page-heading"><div><p class="breadcrumb">Início / <strong>Manutenções</strong></p><h1>Gerenciar Manutenções</h1><p>Acompanhe o status e o histórico de serviços</p></div><a class="primary-action" href="agendamentos.html"><i class="ph ph-plus"></i>Novo Registro</a></div>
-<div class="stat-grid"><div class="stat-card"><div class="stat-icon red"><i class="ph ph-warning"></i></div><div><span>Urgentes</span><strong>03</strong></div></div><div class="stat-card"><div class="stat-icon amber"><i class="ph ph-clock"></i></div><div><span>Pendentes</span><strong>05</strong></div></div><div class="stat-card"><div class="stat-icon green"><i class="ph ph-check-circle"></i></div><div><span>Realizadas</span><strong>12</strong></div></div></div>
-<div class="filter-bar"><div class="search-box"><i class="ph ph-magnifying-glass"></i><input data-filter-target=".maintenance-row" type="search" placeholder="Buscar por serviço ou oficina..." aria-label="Buscar manutenção"></div><select class="filter-select"><option>Todos os veículos</option><option>Peugeot 206</option><option>Citroën C3 2020</option></select><select class="filter-select"><option>Status</option><option>Urgente</option><option>Pendente</option><option>Concluído</option></select></div>
-<div class="maintenance-list-page"><article class="maintenance-row urgent"><div><span class="status-pill danger">URGENTE</span><h3>Troca de Pastilhas de Freio</h3><p><i class="ph ph-car"></i> Peugeot 206 - ABC-1D23</p></div><p><strong>Oficina:</strong> AutoCenter Premium<br><strong>Previsão:</strong> 14 Abr 2026</p><div><strong>R$ 450,00</strong><button class="outline-action">Detalhes</button></div></article>
-<article class="maintenance-row done"><div><span class="status-pill success">CONCLUÍDO</span><h3>Troca de Óleo e Filtro</h3><p><i class="ph ph-car"></i> Citroën C3 2020 - DEF-2G45</p></div><p><strong>Oficina:</strong> Mecânica do Japa<br><strong>Realizado em:</strong> 02 Mar 2026</p><div><strong>R$ 280,00</strong><button class="outline-action">Ver Recibo</button></div></article>
-<article class="maintenance-row pending"><div><span class="status-pill warning">PENDENTE</span><h3>Alinhamento e Balanceamento</h3><p><i class="ph ph-car"></i> Peugeot 206 - ABC-1D23</p></div><p><strong>Oficina:</strong> Pneus & Cia<br><strong>Data:</strong> 20 Abr 2026</p><div><strong>R$ 180,00</strong><button class="outline-action">Confirmar</button></div></article></div></main></div><script src="JS/pages.js"></script></body></html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreventCar | Manutenções</title>
+    <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
+
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('preventcar:theme') || localStorage.getItem('theme');
+                if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-bs-theme', t === 'light' ? 'light' : 'dark');
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+    <div class="app-container">
+
+        <aside class="sidebar offcanvas-md offcanvas-start" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel">
+            <div>
+                <div class="sidebar-header">
+                    <div class="logo-icon"><img src="images/logo.svg" alt=""></div>
+                    <span class="logo-text" id="sidebarLabel">PreventCar</span>
+                    <button type="button" class="btn-close d-md-none ms-auto" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Fechar menu"></button>
+                </div>
+                <nav class="sidebar-nav" aria-label="Menu principal">
+                    <a href="dashboard.html" class="sidebar-link"><i class="ph ph-squares-four" aria-hidden="true"></i><span>Dashboard</span></a>
+                    <a href="veiculos.html" class="sidebar-link"><i class="ph ph-car-profile" aria-hidden="true"></i><span>Meus Veículos</span></a>
+                    <a href="manutencoes.html" class="sidebar-link active" aria-current="page"><i class="ph ph-wrench" aria-hidden="true"></i><span>Manutenções</span></a>
+                    <a href="agendamentos.html" class="sidebar-link"><i class="ph ph-calendar-blank" aria-hidden="true"></i><span>Agendamentos</span></a>
+                    <a href="historico.html" class="sidebar-link"><i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i><span>Histórico</span></a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="images/foto-do-perfil.png" class="user-avatar" alt="">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Plano Pro</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="icon-btn mobile-menu-btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Abrir menu">
+                        <i class="ph ph-list" aria-hidden="true"></i>
+                    </button>
+                    <div class="welcome-section"><span class="topbar-title">Manutenções</span></div>
+                </div>
+                <div class="topbar-actions">
+                    <button type="button" class="icon-btn" data-theme-toggle aria-label="Alternar tema claro/escuro" aria-pressed="false">
+                        <i class="ph ph-sun sun-icon" aria-hidden="true"></i>
+                        <i class="ph ph-moon moon-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="topbar-avatar"><img src="images/foto-do-perfil.png" alt="Foto de perfil"></div>
+                </div>
+            </header>
+
+            <div class="page-heading">
+                <div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="dashboard.html">Início</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Manutenções</li>
+                        </ol>
+                    </nav>
+                    <h1>Gerenciar Manutenções</h1>
+                    <p>Acompanhe o status e o histórico de serviços</p>
+                </div>
+                <a class="btn btn-primary" href="agendamentos.html"><i class="ph ph-plus" aria-hidden="true"></i>Novo Registro</a>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-3 g-3 mb-4">
+                <div class="col">
+                    <div class="stat-card">
+                        <div class="stat-icon red"><i class="ph ph-warning" aria-hidden="true"></i></div>
+                        <div><span>Urgentes</span><strong>03</strong></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card">
+                        <div class="stat-icon amber"><i class="ph ph-clock" aria-hidden="true"></i></div>
+                        <div><span>Pendentes</span><strong>05</strong></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="ph ph-check-circle" aria-hidden="true"></i></div>
+                        <div><span>Realizadas</span><strong>12</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-bar" data-filter-group=".maintenance-row" data-empty-target="maintenanceEmpty">
+                <div class="search-box">
+                    <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+                    <input type="search" class="form-control" placeholder="Buscar por serviço ou oficina..." aria-label="Buscar manutenção">
+                </div>
+                <select class="form-select" data-filter-attr="vehicle" aria-label="Filtrar por veículo">
+                    <option value="">Todos os veículos</option>
+                    <option>Peugeot 206</option>
+                    <option>Citroën C3 2020</option>
+                </select>
+                <select class="form-select" data-filter-attr="status" aria-label="Filtrar por status">
+                    <option value="">Status</option>
+                    <option>Urgente</option>
+                    <option>Pendente</option>
+                    <option>Concluído</option>
+                </select>
+            </div>
+
+            <div class="maintenance-list-page">
+                <article class="maintenance-row urgent row g-3 align-items-center" data-vehicle="Peugeot 206" data-status="Urgente">
+                    <div class="col-md-5">
+                        <span class="badge rounded-pill status-badge status-late">URGENTE</span>
+                        <h3>Troca de Pastilhas de Freio</h3>
+                        <p><i class="ph ph-car" aria-hidden="true"></i> Peugeot 206 - ABC-1D23</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Oficina:</strong> AutoCenter Premium<br><strong>Previsão:</strong> 14 Abr 2026</p>
+                    </div>
+                    <div class="col-md-3 text-md-end">
+                        <span class="maintenance-price">R$ 450,00</span>
+                        <a class="btn btn-outline-secondary btn-sm" href="agendamentos.html">Agendar</a>
+                    </div>
+                </article>
+
+                <article class="maintenance-row done row g-3 align-items-center" data-vehicle="Citroën C3 2020" data-status="Concluído">
+                    <div class="col-md-5">
+                        <span class="badge rounded-pill status-badge status-ok">CONCLUÍDO</span>
+                        <h3>Troca de Óleo e Filtro</h3>
+                        <p><i class="ph ph-car" aria-hidden="true"></i> Citroën C3 2020 - DEF-2G45</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Oficina:</strong> Mecânica do Japa<br><strong>Realizado em:</strong> 02 Mar 2026</p>
+                    </div>
+                    <div class="col-md-3 text-md-end">
+                        <span class="maintenance-price">R$ 280,00</span>
+                        <button class="btn btn-outline-secondary btn-sm" type="button" data-toast="Recibo disponível em breve.">Ver Recibo</button>
+                    </div>
+                </article>
+
+                <article class="maintenance-row pending row g-3 align-items-center" data-vehicle="Peugeot 206" data-status="Pendente">
+                    <div class="col-md-5">
+                        <span class="badge rounded-pill status-badge status-warn">PENDENTE</span>
+                        <h3>Alinhamento e Balanceamento</h3>
+                        <p><i class="ph ph-car" aria-hidden="true"></i> Peugeot 206 - ABC-1D23</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Oficina:</strong> Pneus &amp; Cia<br><strong>Data:</strong> 20 Abr 2026</p>
+                    </div>
+                    <div class="col-md-3 text-md-end">
+                        <span class="maintenance-price">R$ 180,00</span>
+                        <button class="btn btn-outline-secondary btn-sm" type="button" data-toast="Manutenção confirmada.">Confirmar</button>
+                    </div>
+                </article>
+            </div>
+            <p class="empty-state" id="maintenanceEmpty" hidden>Nenhuma manutenção encontrada com esses filtros.</p>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="JS/theme.js"></script>
+    <script src="JS/pages.js"></script>
+</body>
+</html>

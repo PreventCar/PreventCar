@@ -1,187 +1,208 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
+    <meta name="description" content="PreventCar: gerencie manutenções, gastos e o histórico completo do seu veículo em um só lugar.">
     <title>PreventCar | Home</title>
+    <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
 
     <script>
-        if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.add('light-mode');
-        }
+        (function () {
+            try {
+                var t = localStorage.getItem('preventcar:theme') || localStorage.getItem('theme');
+                if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-bs-theme', t === 'light' ? 'light' : 'dark');
+            } catch (e) {}
+        })();
     </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="header">
-        <nav class="navbar">
-            <a href="#" class="navbar-logo">
-                <img src="images/logo.svg" alt="">
-                <span class="nome__logo">PreventCar</span>
-            </a>
+    <header class="header">
+        <nav class="navbar navbar-expand-md site-navbar" data-bs-theme="dark" aria-label="Navegação principal">
+            <div class="container-fluid p-0">
+                <a href="#" class="navbar-brand navbar-logo">
+                    <img src="images/logo.svg" alt="">
+                    <span class="nome__logo">PreventCar</span>
+                </a>
 
-            <button class="hamburger" id="hamburger">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
-            </button>
-
-            <ul class="navbar-links" id="navbar-links">
-                <li><a href="#recursos">Recursos</a></li>
-                <li><a href="#beneficios">Benefícios</a></li>
-                <li><a href="#precos">Preços</a></li>
-            </ul>
-
-            <div class="navbar-actions" id="navbar-actions">
-                <button id="theme-toggle" class="theme-toggle" aria-label="Mudar tema">
-                    <i class="fa-solid fa-sun"></i>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="login.html" class="login-link">Entrar</a>
-                <a href="cadastro.html" class="btn-primary">Começar Grátis</a>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <div class="nav-collapse-inner d-md-flex align-items-center w-100">
+                        <ul class="navbar-nav mx-auto gap-md-4 text-center">
+                            <li class="nav-item"><a class="nav-link" href="#recursos">Recursos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#beneficios">Benefícios</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#precos">Preços</a></li>
+                        </ul>
+
+                        <div class="d-flex flex-column flex-md-row align-items-center gap-3 gap-md-4 mt-3 mt-md-0">
+                            <button type="button" class="theme-toggle" data-theme-toggle aria-label="Alternar tema claro/escuro" aria-pressed="false">
+                                <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
+                                <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
+                            </button>
+                            <a href="login.html" class="login-link">Entrar</a>
+                            <a href="cadastro.html" class="btn btn-outline-light">Começar Grátis</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
 
         <div class="container-principal">
-            <div class="container-content">
-                <h1 class="container-title">
-                    Sua frota sob controle, <br> <span class="h1-white">sem</span>
-                    <span class="h1-white">estresse.</span>
-                </h1>
+            <div class="row w-100 g-0">
+                <div class="col-lg-6">
+                    <h1 class="container-title">
+                        Sua frota sob controle, <br> sem estresse.
+                    </h1>
 
-                <p class="container-subtitle">
-                    A plataforma definitiva para gerenciar manutenções, gastos e o histórico completo do seu veículo.
-                    Tudo em um só lugar.
-                </p>
-
-                <div class="actions">
-                    <a href="cadastro.html" class="btn-primary">Criar conta gratuita</a>
-                    <button class="btn-secondary">
-                        Ver Demo
-                    </button>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="image-wrapper">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="info-container" id="recursos">
-        <div class="conteudo">
-            <div class="container-title-center hidden fade-in">
-                <span class="h1-white" id="h1-center"> Tudo o que você precisa</span>
-            </div>
-            <div class="container-cards">
-                <div class="card hidden slide-up delay-1">
-                    <h1><i class="fa-solid fa-wrench fa-lg icon"></i></h1>
-                    <span>Alertas de Manutenção</span>
-                    <p class="p-card">Seja avisado sobre trocas de óleo, filtros e revisões antes que se tornem um
-                        problema.</p>
-                </div>
-
-                <div class="card hidden slide-up delay-2">
-                    <h1><i class="fa-solid fa-folder-open fa-lg icon"></i></h1>
-                    <span>Controle Financeiro</span>
-                    <p class="p-card">Acompanhe cada centavo gasto com combustível, seguro e reparos com gráficos
-                        claros.</p>
-                </div>
-
-                <div class="card hidden slide-up delay-3">
-                    <h1><i class="fa-solid fa-chart-pie fa-lg icon"></i></h1>
-                    <span>Histórico Digital</span>
-                    <p class="p-card">Valorize seu carro na revenda com um histórico de revisões completo e organizado.
+                    <p class="container-subtitle">
+                        A plataforma definitiva para gerenciar manutenções, gastos e o histórico completo do seu veículo.
+                        Tudo em um só lugar.
                     </p>
-                </div>
 
-                <div class="card hidden slide-up delay-4">
-                    <h1><i class="fa-solid fa-calendar-check fa-lg icon"></i></h1>
-                    <span>Agendamento Online</span>
-                    <p class="p-card">Marque serviços diretamente com oficinas parceiras através da plataforma.</p>
+                    <div class="actions">
+                        <a href="cadastro.html" class="btn btn-outline-light">Criar conta gratuita</a>
+                        <a href="dashboard.html" class="btn btn-light">Ver Demo</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <section class="features-section" id="beneficios">
-        <div class="feature-card hidden slide-up">
-            <div class="feature-content">
-                <h2>Visualize o futuro da sua gestão automotiva</h2>
-                <p>Nossa interface foi desenhada para ser simples, rápida e intuitiva. Gaste menos tempo preenchendo
-                    planilhas e mais tempo dirigindo.</p>
+    <main>
+        <section class="info-container" id="recursos">
+            <h2 class="section-title reveal">Tudo o que você precisa</h2>
 
-                <ul class="feature-list">
-                    <li><span class="check-icon">✔</span> Modo Escuro disponível</li>
-                    <li><span class="check-icon">✔</span> Sincronização em tempo real</li>
-                    <li><span class="check-icon">✔</span> Exportação de relatórios em PDF</li>
-                </ul>
-            </div>
-            <div class="feature-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Dashboard do sistema" class="dashboard-img">
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing-section" id="precos">
-        <h2 class="pricing-title hidden fade-in">Planos transparentes para qualquer necessidade</h2>
-
-        <div class="pricing-container">
-            <div class="price-card hidden slide-up delay-1">
-                <h3>Grátis</h3>
-                <div class="price">
-                    <span class="currency">R$</span>0<span class="period">/ mês</span>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 container-cards">
+                <div class="col reveal slide-up delay-1">
+                    <article class="feature-tile h-100">
+                        <div class="feature-icon"><i class="fa-solid fa-wrench fa-lg icon" aria-hidden="true"></i></div>
+                        <h3>Alertas de Manutenção</h3>
+                        <p class="p-card">Seja avisado sobre trocas de óleo, filtros e revisões antes que se tornem um
+                            problema.</p>
+                    </article>
                 </div>
-                <ul class="price-list">
-                    <li>Cadastro de 1 veículo;</li>
-                    <li>Acompanhamento;</li>
-                    <li>Geração de relatório;</li>
-                    <li>Histórico de manutenção;</li>
-                    <li>Atualização em tempo real.</li>
-                </ul>
-                <button class="btn">Button</button>
-            </div>
 
-            <div class="price-card pro-card hidden slide-up delay-2">
-                <h3>Pro</h3>
-                <div class="price">
-                    <span class="currency">R$</span>50<span class="period">/ mês</span>
+                <div class="col reveal slide-up delay-2">
+                    <article class="feature-tile h-100">
+                        <div class="feature-icon"><i class="fa-solid fa-folder-open fa-lg icon" aria-hidden="true"></i></div>
+                        <h3>Controle Financeiro</h3>
+                        <p class="p-card">Acompanhe cada centavo gasto com combustível, seguro e reparos com gráficos
+                            claros.</p>
+                    </article>
                 </div>
-                <ul class="price-list">
-                    <li>Cadastro de 2 veículos;</li>
-                    <li>Sugestão de mecânicas parceiras;</li>
-                    <li>Desconto de mecânicas parceiras;</li>
-                    <li>Histórico de manutenção detalhado;</li>
-                    <li>Gerenciamento de calendário veicular.</li>
-                </ul>
-                <button class="btn">Button</button>
-            </div>
 
-            <div class="price-card hidden slide-up delay-3">
-                <h3>Empresarial</h3>
-                <div class="price">
-                    <span class="currency">R$</span>300<span class="period">/ mês</span>
+                <div class="col reveal slide-up delay-3">
+                    <article class="feature-tile h-100">
+                        <div class="feature-icon"><i class="fa-solid fa-chart-pie fa-lg icon" aria-hidden="true"></i></div>
+                        <h3>Histórico Digital</h3>
+                        <p class="p-card">Valorize seu carro na revenda com um histórico de revisões completo e organizado.
+                        </p>
+                    </article>
                 </div>
-                <ul class="price-list">
-                    <li>Cadastro de 200 veiculos;</li>
-                    <li>Gerenciamento detalhado;</li>
-                    <li>Acesso Multi-utilizador;</li>
-                    <li>Relatórios Financeiros de Frota;</li>
-                    <li>Suporte Técnico Prioritário (24/7).</li>
-                </ul>
-                <button class="btn">Button</button>
+
+                <div class="col reveal slide-up delay-4">
+                    <article class="feature-tile h-100">
+                        <div class="feature-icon"><i class="fa-solid fa-calendar-check fa-lg icon" aria-hidden="true"></i></div>
+                        <h3>Agendamento Online</h3>
+                        <p class="p-card">Marque serviços diretamente com oficinas parceiras através da plataforma.</p>
+                    </article>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="features-section" id="beneficios">
+            <div class="feature-card row g-0 reveal slide-up">
+                <div class="col-lg-6 feature-content">
+                    <h2>Visualize o futuro da sua gestão automotiva</h2>
+                    <p>Nossa interface foi desenhada para ser simples, rápida e intuitiva. Gaste menos tempo preenchendo
+                        planilhas e mais tempo dirigindo.</p>
+
+                    <ul class="feature-list">
+                        <li><span class="check-icon" aria-hidden="true">✔</span> Modo Escuro disponível</li>
+                        <li><span class="check-icon" aria-hidden="true">✔</span> Sincronização em tempo real</li>
+                        <li><span class="check-icon" aria-hidden="true">✔</span> Exportação de relatórios em PDF</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 feature-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Dashboard do sistema" class="dashboard-img" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section" id="precos">
+            <h2 class="pricing-title reveal">Planos transparentes para qualquer necessidade</h2>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 align-items-center pricing-container">
+                <div class="col reveal slide-up delay-1">
+                    <article class="price-card">
+                        <h3>Grátis</h3>
+                        <div class="price">
+                            <span class="currency">R$</span>0<span class="period">/ mês</span>
+                        </div>
+                        <ul class="price-list">
+                            <li>Cadastro de 1 veículo;</li>
+                            <li>Acompanhamento;</li>
+                            <li>Geração de relatório;</li>
+                            <li>Histórico de manutenção;</li>
+                            <li>Atualização em tempo real.</li>
+                        </ul>
+                        <a href="cadastro.html" class="btn btn-outline-secondary btn-lg w-100">Começar grátis</a>
+                    </article>
+                </div>
+
+                <div class="col reveal slide-up delay-2">
+                    <article class="price-card pro-card">
+                        <h3>Pro</h3>
+                        <div class="price">
+                            <span class="currency">R$</span>50<span class="period">/ mês</span>
+                        </div>
+                        <ul class="price-list">
+                            <li>Cadastro de 2 veículos;</li>
+                            <li>Sugestão de mecânicas parceiras;</li>
+                            <li>Desconto de mecânicas parceiras;</li>
+                            <li>Histórico de manutenção detalhado;</li>
+                            <li>Gerenciamento de calendário veicular.</li>
+                        </ul>
+                        <a href="cadastro.html" class="btn btn-primary btn-lg w-100">Assinar Pro</a>
+                    </article>
+                </div>
+
+                <div class="col reveal slide-up delay-3">
+                    <article class="price-card">
+                        <h3>Empresarial</h3>
+                        <div class="price">
+                            <span class="currency">R$</span>300<span class="period">/ mês</span>
+                        </div>
+                        <ul class="price-list">
+                            <li>Cadastro de 200 veiculos;</li>
+                            <li>Gerenciamento detalhado;</li>
+                            <li>Acesso Multi-utilizador;</li>
+                            <li>Relatórios Financeiros de Frota;</li>
+                            <li>Suporte Técnico Prioritário (24/7).</li>
+                        </ul>
+                        <a href="cadastro.html" class="btn btn-outline-secondary btn-lg w-100">Assinar Empresarial</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-brand">
+            <div class="row footer-top">
+                <div class="col-md-6">
                     <div class="brand-logo">
                         <img src="images/logo.png" alt="">
                         <span class="brand-name">PreventCar</span>
@@ -189,23 +210,25 @@
                     <p class="brand-slogan">Cuidando do seu carro,<br>cuidando de você.</p>
                 </div>
 
-                <div class="footer-links-wrapper">
-                    <div class="footer-column">
-                        <h4>Produto</h4>
-                        <ul>
-                            <li><a href="#">Recursos</a></li>
-                            <li><a href="#">Preços</a></li>
-                            <li><a href="#">Mobile App</a></li>
-                        </ul>
-                    </div>
+                <div class="col-md-6 d-flex justify-content-md-end">
+                    <div class="footer-links-wrapper">
+                        <div class="footer-column">
+                            <h4>Produto</h4>
+                            <ul>
+                                <li><a href="#recursos">Recursos</a></li>
+                                <li><a href="#precos">Preços</a></li>
+                                <li><a href="#beneficios">Mobile App</a></li>
+                            </ul>
+                        </div>
 
-                    <div class="footer-column">
-                        <h4>Suporte</h4>
-                        <ul>
-                            <li><a href="#">Ajuda</a></li>
-                            <li><a href="#">Contato</a></li>
-                            <li><a href="#">Oficinas</a></li>
-                        </ul>
+                        <div class="footer-column">
+                            <h4>Suporte</h4>
+                            <ul>
+                                <li><a href="#">Ajuda</a></li>
+                                <li><a href="#">Contato</a></li>
+                                <li><a href="#">Oficinas</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -216,8 +239,9 @@
         </div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/fb9f429e20.js" crossorigin="anonymous"></script>
-    <script src="JS/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="JS/theme.js"></script>
+    <script src="JS/index.js"></script>
 </body>
 
 </html>

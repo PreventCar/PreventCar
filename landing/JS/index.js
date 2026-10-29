@@ -1,40 +1,21 @@
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navbar-links');
-const navActions = document.getElementById('navbar-actions');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    navActions.classList.toggle('active');
-});
-
-const observer = new IntersectionObserver((entries) => {
+// Revela as seções ao rolar a página (uma única vez por elemento)
+const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('show');
-        } else {
-            entry.target.classList.remove('show');
+            observer.unobserve(entry.target);
         }
     });
 }, { threshold: 0.15 });
 
-const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach((el) => observer.observe(el));
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-const themeToggleBtn = document.getElementById('theme-toggle');
-const themeIcon = themeToggleBtn.querySelector('i');
+// Fecha o menu mobile ao escolher uma seção
+const mainNav = document.getElementById('mainNav');
 
-if (document.documentElement.classList.contains('light-mode')) {
-    themeIcon.classList.replace('fa-sun', 'fa-moon');
-}
-
-themeToggleBtn.addEventListener('click', () => {
-    document.documentElement.classList.toggle('light-mode');
-
-    if (document.documentElement.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
-        themeIcon.classList.replace('fa-sun', 'fa-moon');
-    } else {
-        localStorage.setItem('theme', 'dark');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
+mainNav.querySelectorAll('.nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+        const collapse = bootstrap.Collapse.getInstance(mainNav);
+        if (collapse) collapse.hide();
+    });
 });

@@ -1,51 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>PreventCar | Login</title>
+    <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
 
     <script>
-        if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.add('light-mode');
-        }
+        (function () {
+            try {
+                var t = localStorage.getItem('preventcar:theme') || localStorage.getItem('theme');
+                if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-bs-theme', t === 'light' ? 'light' : 'dark');
+            } catch (e) {}
+        })();
     </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="login-container">
+    <main class="login-container row g-0">
         <!-- Painel Esquerdo (Ilustração) -->
-        <div class="left-panel">
+        <div class="col-lg-6 left-panel">
             <div class="branding">
                 <h1>PreventCar</h1>
                 <p>A maneira inteligente de<br>cuidar do seu veículo</p>
             </div>
             <div class="illustration">
                 <div class="car-wrapper">
-                    <i class="fa-solid fa-gear floating-icon icon-1"></i>
-                    <i class="fa-solid fa-plug floating-icon icon-2"></i>
-                    <i class="fa-solid fa-car-battery floating-icon icon-3"></i>
-                    <i class="fa-solid fa-circle-exclamation floating-icon icon-4"></i>
-                    <i class="fa-solid fa-wrench floating-icon icon-5"></i>
-                    <i class="fa-solid fa-oil-can floating-icon icon-6"></i>
+                    <i class="fa-solid fa-gear floating-icon icon-1" aria-hidden="true"></i>
+                    <i class="fa-solid fa-plug floating-icon icon-2" aria-hidden="true"></i>
+                    <i class="fa-solid fa-car-battery floating-icon icon-3" aria-hidden="true"></i>
+                    <i class="fa-solid fa-circle-exclamation floating-icon icon-4" aria-hidden="true"></i>
+                    <i class="fa-solid fa-wrench floating-icon icon-5" aria-hidden="true"></i>
+                    <i class="fa-solid fa-oil-can floating-icon icon-6" aria-hidden="true"></i>
                     <img src="images/carroLogin.png" alt="Ilustração do Carro PreventCar" class="blue-car">
                 </div>
             </div>
         </div>
 
         <!-- Painel Direito (Formulário) -->
-        <div class="right-panel">
-            <button id="theme-toggle" class="theme-toggle login-theme-btn" aria-label="Mudar tema"
-                style="position: absolute; top: 20px; right: 20px;">
-                <i class="fa-solid fa-sun"></i>
+        <div class="col-lg-6 right-panel">
+            <button type="button" class="theme-toggle theme-toggle-auth" data-theme-toggle aria-label="Alternar tema claro/escuro" aria-pressed="false">
+                <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
+                <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
             </button>
-            <div class="login-card">
 
-                <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+            <div class="login-card">
+                <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Voltar</a>
 
                 <div class="logo">
                     <img src="images/logo.png" alt="Logo PreventCar">
@@ -57,40 +63,46 @@
                     <p>Faça login para acessar sua garagem</p>
                 </div>
 
-                <form action="#">
-                    <div class="input-group">
-                        <label for="email">E-mail</label>
-                        <div class="input-wrapper">
-                            <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                <form class="needs-validation" novalidate data-redirect="dashboard.html">
+                    <div class="mb-4">
+                        <label for="email" class="form-label">E-mail</label>
+                        <div class="input-group input-group-auth has-validation">
+                            <span class="input-group-text"><i class="fa-regular fa-envelope" aria-hidden="true"></i></span>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail"
+                                autocomplete="email" required>
+                            <div class="invalid-feedback">Informe um e-mail válido.</div>
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label for="password">Senha</label>
-                        <div class="input-wrapper">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="password" placeholder="Digite sua senha" required>
-                            <i class="fa-regular fa-eye toggle-password" id="togglePassword"></i>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Senha</label>
+                        <div class="input-group input-group-auth has-validation">
+                            <span class="input-group-text"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control has-toggle" id="password" name="password"
+                                placeholder="Digite sua senha" autocomplete="current-password" required>
+                            <button type="button" class="btn toggle-password" aria-label="Mostrar senha" aria-pressed="false">
+                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                            </button>
+                            <div class="invalid-feedback">Informe sua senha.</div>
                         </div>
                     </div>
 
                     <div class="form-actions">
-                        <label class="remember-me">
-                            <input type="checkbox" checked>
-                            Lembrar de mim
-                        </label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="remember" name="remember" checked>
+                            <label class="form-check-label" for="remember">Lembrar de mim</label>
+                        </div>
                         <a href="#" class="forgot-password">Esqueceu sua senha?</a>
                     </div>
 
-                    <button type="submit" class="btn-login">Entrar na Plataforma</button>
+                    <button type="submit" class="btn btn-primary btn-login">Entrar na Plataforma</button>
 
                     <div class="divider">
                         <span>ou</span>
                     </div>
 
-                    <button type="button" class="btn-google">
-                        <i class="fa-brands fa-google"></i> Entrar com o Google
+                    <button type="button" class="btn btn-google">
+                        <i class="fa-brands fa-google" aria-hidden="true"></i> Entrar com o Google
                     </button>
                 </form>
 
@@ -99,10 +111,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <script src="JS/login.js"></script>
-   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="JS/theme.js"></script>
+    <script src="JS/auth.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,178 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PreventCar | Agendamentos</title><script src="https://unpkg.com/@phosphor-icons/web"></script><link rel="stylesheet" href="css/style.css"></head>
-<body class="dashboard-body"><div class="app-container"><div class="sidebar-overlay" id="sidebarOverlay"></div><aside class="sidebar" id="sidebar"><div><div class="sidebar-header"><div class="logo-icon"><img src="images/logo.svg" alt="PreventCar"></div><span class="logo-text">PreventCar</span></div><nav class="sidebar-nav"><a href="dashboard.html" class="nav-item"><i class="ph ph-squares-four"></i><span>Dashboard</span></a><a href="veiculos.html" class="nav-item"><i class="ph ph-car-profile"></i><span>Meus Veículos</span></a><a href="manutencoes.html" class="nav-item"><i class="ph ph-wrench"></i><span>Manutenções</span></a><a href="agendamentos.html" class="nav-item active"><i class="ph ph-calendar-blank"></i><span>Agendamentos</span></a><a href="historico.html" class="nav-item"><i class="ph ph-clock-counter-clockwise"></i><span>Histórico</span></a></nav></div><div class="sidebar-footer"><div class="user-profile"><img src="images/foto-do-perfil.png" class="user-avatar" alt=""><span class="user-name">João Silva</span></div></div></aside>
-<main class="main-content"><header class="topbar"><div class="topbar-left"><button class="mobile-menu-btn" id="mobileMenuBtn"><i class="ph ph-list"></i></button><div class="welcome-section"><h1>Agendamentos</h1></div></div><div class="topbar-actions"><button class="theme-toggle-dash" id="themeToggle" aria-label="Alternar tema"><i class="ph ph-sun sun-icon"></i><i class="ph ph-moon moon-icon"></i></button><div class="topbar-avatar"><img src="images/foto-do-perfil.png" alt="Perfil"></div></div></header>
-<div class="page-heading"><div><p class="breadcrumb">Início / Agendamentos / <strong>Novo</strong></p><h1>Agendar Manutenção</h1><p>Programe um novo serviço</p></div></div>
-<div class="booking-layout"><div><section class="form-card"><h2>Informações do serviço</h2><div class="form-grid"><div class="field"><label for="vehicle">Veículo</label><select id="vehicle"><option>Peugeot 206 - ABC-1D23</option><option>Citroën C3 2020 - DEF-2G45</option></select></div><div class="field"><label for="service">Tipo de serviço</label><select id="service"><option>Troca de óleo</option><option>Revisão preventiva</option><option>Alinhamento e balanceamento</option></select></div><div class="field"><label for="shop">Oficina</label><select id="shop"><option>AutoCenter Premium - ⭐ 4.8</option><option>Mecânica do Japa - ⭐ 4.6</option></select></div><div class="field"><label for="notes">Observações</label><textarea id="notes" placeholder="Observações"></textarea></div><div class="upload-box"><i class="ph ph-upload-simple"></i> Anexar fotos</div></div></section><section class="form-card reminder-card"><h2>Lembretes</h2><div class="toggle-row">Notificar 1 dia antes <button class="toggle on" aria-pressed="true"></button></div><div class="toggle-row">Notificar 1 hora antes <button class="toggle on" aria-pressed="true"></button></div><div class="toggle-row">Notificar por e-mail <button class="toggle" aria-pressed="false"></button></div></section></div>
-<aside><section class="calendar-card"><div class="calendar-header"><button aria-label="Mês anterior">‹</button><span>Maio 2026</span><button aria-label="Próximo mês">›</button></div><div class="calendar-grid"><span>Do</span><span>Se</span><span>Te</span><span>Qu</span><span>Qi</span><span>Se</span><span>Sa</span><span></span><span></span><span></span><span></span><span></span><span>1</span><span>2</span><span>3</span><span class="day">4</span><span class="day">5</span><span class="day">6</span><span class="day">7</span><span class="day">8</span><span class="day">9</span><span class="day">10</span><span class="day">11</span><span class="day">12</span><span class="day selected">13</span><span class="day">14</span><span class="day">15</span><span class="day">16</span><span class="day">17</span><span class="day">18</span><span class="day">19</span><span class="day">20</span><span class="day">21</span><span class="day">22</span><span class="day">23</span><span class="day">24</span><span class="day">25</span><span class="day">26</span><span class="day">27</span><span class="day">28</span><span class="day">29</span><span class="day">30</span><span class="day">31</span></div><div class="time-grid"><button>08:00</button><button>09:30</button><button class="selected">11:00</button><button>14:00</button><button>16:00</button></div></section><section class="summary-card"><h2>Resumo do agendamento</h2><dl><dt>Serviço</dt><dd>Agendar Manutenção</dd><dt>Data</dt><dd>13/05/2026</dd><dt>Horário</dt><dd>09:30 - 11:00</dd><dt>Oficina</dt><dd>AutoCenter Premium</dd></dl><div class="summary-total"><span>Custo estimado:</span><span>R$ 280,00</span></div><div class="booking-actions"><button class="outline-action">Cancelar</button><button class="primary-action">Confirmar Agendamento</button></div></section></aside></div></main></div><script src="JS/pages.js"></script></body></html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreventCar | Agendamentos</title>
+    <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
+
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('preventcar:theme') || localStorage.getItem('theme');
+                if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-bs-theme', t === 'light' ? 'light' : 'dark');
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+    <div class="app-container">
+
+        <aside class="sidebar offcanvas-md offcanvas-start" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel">
+            <div>
+                <div class="sidebar-header">
+                    <div class="logo-icon"><img src="images/logo.svg" alt=""></div>
+                    <span class="logo-text" id="sidebarLabel">PreventCar</span>
+                    <button type="button" class="btn-close d-md-none ms-auto" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Fechar menu"></button>
+                </div>
+                <nav class="sidebar-nav" aria-label="Menu principal">
+                    <a href="dashboard.html" class="sidebar-link"><i class="ph ph-squares-four" aria-hidden="true"></i><span>Dashboard</span></a>
+                    <a href="veiculos.html" class="sidebar-link"><i class="ph ph-car-profile" aria-hidden="true"></i><span>Meus Veículos</span></a>
+                    <a href="manutencoes.html" class="sidebar-link"><i class="ph ph-wrench" aria-hidden="true"></i><span>Manutenções</span></a>
+                    <a href="agendamentos.html" class="sidebar-link active" aria-current="page"><i class="ph ph-calendar-blank" aria-hidden="true"></i><span>Agendamentos</span></a>
+                    <a href="historico.html" class="sidebar-link"><i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i><span>Histórico</span></a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="images/foto-do-perfil.png" class="user-avatar" alt="">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Plano Pro</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="icon-btn mobile-menu-btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Abrir menu">
+                        <i class="ph ph-list" aria-hidden="true"></i>
+                    </button>
+                    <div class="welcome-section"><span class="topbar-title">Agendamentos</span></div>
+                </div>
+                <div class="topbar-actions">
+                    <button type="button" class="icon-btn" data-theme-toggle aria-label="Alternar tema claro/escuro" aria-pressed="false">
+                        <i class="ph ph-sun sun-icon" aria-hidden="true"></i>
+                        <i class="ph ph-moon moon-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="topbar-avatar"><img src="images/foto-do-perfil.png" alt="Foto de perfil"></div>
+                </div>
+            </header>
+
+            <div class="page-heading">
+                <div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="dashboard.html">Início</a></li>
+                            <li class="breadcrumb-item"><a href="manutencoes.html">Agendamentos</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Novo</li>
+                        </ol>
+                    </nav>
+                    <h1>Agendar Manutenção</h1>
+                    <p>Programe um novo serviço</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <section class="form-card">
+                        <h2>Informações do serviço</h2>
+                        <div class="d-grid gap-3">
+                            <div>
+                                <label class="form-label" for="vehicle">Veículo</label>
+                                <select class="form-select" id="vehicle">
+                                    <option>Peugeot 206 - ABC-1D23</option>
+                                    <option>Citroën C3 2020 - DEF-2G45</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="service">Tipo de serviço</label>
+                                <select class="form-select" id="service">
+                                    <option data-price="280">Troca de óleo</option>
+                                    <option data-price="650">Revisão preventiva</option>
+                                    <option data-price="180">Alinhamento e balanceamento</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="shop">Oficina</label>
+                                <select class="form-select" id="shop">
+                                    <option value="AutoCenter Premium">AutoCenter Premium - ⭐ 4.8</option>
+                                    <option value="Mecânica do Japa">Mecânica do Japa - ⭐ 4.6</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="notes">Observações</label>
+                                <textarea class="form-control" id="notes" placeholder="Observações"></textarea>
+                            </div>
+                            <label class="upload-box">
+                                <input type="file" class="visually-hidden" id="photos" accept="image/*" multiple>
+                                <i class="ph ph-upload-simple" aria-hidden="true"></i> <span id="photosLabel">Anexar fotos</span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <section class="form-card mt-4">
+                        <h2>Lembretes</h2>
+                        <div class="form-check form-switch toggle-row">
+                            <label class="form-check-label" for="remind-day">Notificar 1 dia antes</label>
+                            <input class="form-check-input" type="checkbox" role="switch" id="remind-day" checked>
+                        </div>
+                        <div class="form-check form-switch toggle-row">
+                            <label class="form-check-label" for="remind-hour">Notificar 1 hora antes</label>
+                            <input class="form-check-input" type="checkbox" role="switch" id="remind-hour" checked>
+                        </div>
+                        <div class="form-check form-switch toggle-row">
+                            <label class="form-check-label" for="remind-email">Notificar por e-mail</label>
+                            <input class="form-check-input" type="checkbox" role="switch" id="remind-email">
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="col-lg-4">
+                    <section class="calendar-card mb-4" aria-label="Escolha a data e o horário">
+                        <div class="calendar-header">
+                            <button type="button" id="calendarPrev" aria-label="Mês anterior">‹</button>
+                            <span id="calendarMonth" aria-live="polite">maio de 2026</span>
+                            <button type="button" id="calendarNext" aria-label="Próximo mês">›</button>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid"></div>
+                        <div class="time-grid" role="group" aria-label="Horários disponíveis">
+                            <button type="button" aria-pressed="false">08:00</button>
+                            <button type="button" aria-pressed="false">09:30</button>
+                            <button type="button" class="selected" aria-pressed="true">11:00</button>
+                            <button type="button" aria-pressed="false">14:00</button>
+                            <button type="button" aria-pressed="false">16:00</button>
+                        </div>
+                    </section>
+
+                    <section class="summary-card">
+                        <h2>Resumo do agendamento</h2>
+                        <dl>
+                            <dt>Serviço</dt><dd id="summaryService">Troca de óleo</dd>
+                            <dt>Data</dt><dd id="summaryDate">13/05/2026</dd>
+                            <dt>Horário</dt><dd id="summaryTime">11:00</dd>
+                            <dt>Oficina</dt><dd id="summaryShop">AutoCenter Premium</dd>
+                        </dl>
+                        <div class="summary-total"><span>Custo estimado:</span><span id="summaryCost">R$ 280,00</span></div>
+                        <div class="booking-actions">
+                            <a class="btn btn-outline-secondary" href="manutencoes.html">Cancelar</a>
+                            <button class="btn btn-primary" type="button" id="confirmBooking">Confirmar Agendamento</button>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="JS/theme.js"></script>
+    <script src="JS/pages.js"></script>
+</body>
+</html>

@@ -1,61 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Painel PreventCar: acompanhe veículos, manutenções, alertas e gastos em um só lugar.">
-    <title>PreventCar - Dashboard</title>
+    <title>PreventCar | Dashboard</title>
+    <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
 
     <script>
         (function () {
             try {
-                var saved = localStorage.getItem('preventcar:theme');
-                var light = saved ? saved === 'light' : window.matchMedia('(prefers-color-scheme: light)').matches;
-                if (light) document.documentElement.classList.add('light-mode');
+                var t = localStorage.getItem('preventcar:theme') || localStorage.getItem('theme');
+                if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-bs-theme', t === 'light' ? 'light' : 'dark');
             } catch (e) {}
         })();
     </script>
 
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="dashboard-body">
     <div class="app-container">
 
-        <!-- Overlay para mobile -->
-        <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-icon">
-                    <img src="images/logo.svg" alt="PreventCar Logo">
+        <!-- Sidebar (fixa no desktop, offcanvas no mobile) -->
+        <aside class="sidebar offcanvas-md offcanvas-start" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel">
+            <div>
+                <div class="sidebar-header">
+                    <div class="logo-icon">
+                        <img src="images/logo.svg" alt="">
+                    </div>
+                    <span class="logo-text" id="sidebarLabel">PreventCar</span>
+                    <button type="button" class="btn-close d-md-none ms-auto" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Fechar menu"></button>
                 </div>
-                <span class="logo-text">PreventCar</span>
-            </div>
 
-            <nav class="sidebar-nav" aria-label="Menu principal">
-                <a href="dashboard.html" class="nav-item active" aria-current="page">
-                    <i class="ph ph-squares-four" aria-hidden="true"></i>
-                    <span>Dashboard</span>
-                </a>
-                <a href="veiculos.html" class="nav-item">
-                    <i class="ph ph-car-profile" aria-hidden="true"></i>
-                    <span>Meus Veículos</span>
-                </a>
-                <a href="manutencoes.html" class="nav-item">
-                    <i class="ph ph-wrench" aria-hidden="true"></i>
-                    <span>Manutenções</span>
-                </a>
-                <a href="agendamentos.html" class="nav-item">
-                    <i class="ph ph-calendar-blank" aria-hidden="true"></i>
-                    <span>Agendamentos</span>
-                </a>
-                <a href="historico.html" class="nav-item">
-                    <i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i>
-                    <span>Histórico</span>
-                </a>
-            </nav>
+                <nav class="sidebar-nav" aria-label="Menu principal">
+                    <a href="dashboard.html" class="sidebar-link active" aria-current="page">
+                        <i class="ph ph-squares-four" aria-hidden="true"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="veiculos.html" class="sidebar-link">
+                        <i class="ph ph-car-profile" aria-hidden="true"></i>
+                        <span>Meus Veículos</span>
+                    </a>
+                    <a href="manutencoes.html" class="sidebar-link">
+                        <i class="ph ph-wrench" aria-hidden="true"></i>
+                        <span>Manutenções</span>
+                    </a>
+                    <a href="agendamentos.html" class="sidebar-link">
+                        <i class="ph ph-calendar-blank" aria-hidden="true"></i>
+                        <span>Agendamentos</span>
+                    </a>
+                    <a href="historico.html" class="sidebar-link">
+                        <i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i>
+                        <span>Histórico</span>
+                    </a>
+                </nav>
+            </div>
 
             <div class="sidebar-footer">
                 <div class="user-profile">
@@ -73,7 +75,7 @@
             <!-- Topbar -->
             <header class="topbar">
                 <div class="topbar-left">
-                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
+                    <button class="icon-btn mobile-menu-btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Abrir menu">
                         <i class="ph ph-list" aria-hidden="true"></i>
                     </button>
                     <div class="welcome-section">
@@ -82,25 +84,24 @@
                 </div>
 
                 <div class="topbar-actions">
-                    <!-- Pesquisa na esquerda dos ícones -->
                     <div class="search-box">
                         <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
-                        <input type="search" id="searchInput" placeholder="Buscar manutenção..." aria-label="Buscar nas próximas manutenções" autocomplete="off">
+                        <input type="search" class="form-control" id="searchInput" placeholder="Buscar manutenção..." aria-label="Buscar nas próximas manutenções" autocomplete="off">
                     </div>
 
-                    <button class="theme-toggle-dash" id="themeToggle" aria-label="Alternar tema claro/escuro" aria-pressed="false">
+                    <button type="button" class="icon-btn" data-theme-toggle aria-label="Alternar tema claro/escuro" aria-pressed="false">
                         <i class="ph ph-sun sun-icon" aria-hidden="true"></i>
                         <i class="ph ph-moon moon-icon" aria-hidden="true"></i>
                     </button>
 
                     <!-- Notificações -->
-                    <div class="notif-wrapper">
-                        <button class="notifications" id="notifBtn" type="button" aria-label="Notificações" aria-haspopup="true" aria-expanded="false" aria-controls="notifPanel">
+                    <div class="dropdown notif-wrapper">
+                        <button class="icon-btn" id="notifBtn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-label="Notificações">
                             <i class="ph ph-bell" aria-hidden="true"></i>
-                            <span class="badge" id="notifBadge" aria-hidden="true">0</span>
+                            <span class="badge rounded-pill bg-danger notif-badge" id="notifBadge" aria-hidden="true">0</span>
                         </button>
 
-                        <section class="notif-panel" id="notifPanel" aria-label="Painel de notificações" hidden>
+                        <section class="dropdown-menu dropdown-menu-end notif-panel p-0" id="notifPanel" aria-label="Painel de notificações">
                             <header class="notif-header">
                                 <h2>Notificações</h2>
                                 <button type="button" class="notif-link" id="notifMarkAll">
@@ -126,129 +127,142 @@
 
             <div class="dashboard-grid">
 
-                <div class="metrics-row">
-                    <div class="metric-card">
-                        <div class="metric-icon blue">
-                            <i class="ph ph-car" aria-hidden="true"></i>
-                        </div>
-                        <div class="metric-content">
-                            <span>Veículos cadastrados</span>
-                            <h2>2</h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3">
+                    <div class="col">
+                        <div class="metric-card h-100">
+                            <div class="metric-icon blue">
+                                <i class="ph ph-car" aria-hidden="true"></i>
+                            </div>
+                            <div class="metric-content">
+                                <span>Veículos cadastrados</span>
+                                <h2>2</h2>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="metric-card">
-                        <div class="metric-icon green">
-                            <i class="ph ph-wrench" aria-hidden="true"></i>
-                        </div>
-                        <div class="metric-content">
-                            <span>Manutenções no mês</span>
-                            <h2>5</h2>
+                    <div class="col">
+                        <div class="metric-card h-100">
+                            <div class="metric-icon green">
+                                <i class="ph ph-wrench" aria-hidden="true"></i>
+                            </div>
+                            <div class="metric-content">
+                                <span>Manutenções no mês</span>
+                                <h2>5</h2>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="metric-card">
-                        <div class="metric-icon orange">
-                            <i class="ph ph-calendar-check" aria-hidden="true"></i>
-                        </div>
-                        <div class="metric-content">
-                            <span>Próximas revisões</span>
-                            <h2>3</h2>
+                    <div class="col">
+                        <div class="metric-card h-100">
+                            <div class="metric-icon orange">
+                                <i class="ph ph-calendar-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="metric-content">
+                                <span>Próximas revisões</span>
+                                <h2>3</h2>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="metric-card">
-                        <div class="metric-icon purple">
-                            <i class="ph ph-chart-line-up" aria-hidden="true"></i>
-                        </div>
-                        <div class="metric-content">
-                            <span>Gasto no ano</span>
-                            <h2 id="yearTotal">R$ 4.280</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="middle-row">
-
-                    <div class="dash-card main-card">
-                        <h3>Próximas Manutenções</h3>
-                        <div class="maintenance-list">
-                            <div class="maintenance-item">
-                                <div class="car-thumb">
-                                    <img src="images/pegeout206.jpg" alt="Peugeot 206" loading="lazy">
-                                </div>
-                                <div class="maintenance-info">
-                                    <h4>Troca de óleo</h4>
-                                    <span class="maintenance-vehicle">Peugeot 206</span>
-                                    <span>06 abr. 2026</span>
-                                </div>
-                                <span class="status-badge urgency">Urgência</span>
+                    <div class="col">
+                        <div class="metric-card h-100">
+                            <div class="metric-icon purple">
+                                <i class="ph ph-chart-line-up" aria-hidden="true"></i>
                             </div>
-
-                            <div class="maintenance-item">
-                                <div class="car-thumb">
-                                    <img src="images/citroenc3.jpg" alt="Citroën C3 2020" loading="lazy">
-                                </div>
-                                <div class="maintenance-info">
-                                    <h4>Alinhamento</h4>
-                                    <span class="maintenance-vehicle">Citroën C3 2020</span>
-                                    <span>08 abr. 2026</span>
-                                </div>
-                                <span class="status-badge warning">Atenção</span>
-                            </div>
-
-                            <div class="maintenance-item">
-                                <div class="car-thumb">
-                                    <img src="images/pegeout206.jpg" alt="Peugeot 206" loading="lazy">
-                                </div>
-                                <div class="maintenance-info">
-                                    <h4>Revisão 20.000km</h4>
-                                    <span class="maintenance-vehicle">Peugeot 206</span>
-                                    <span>26 abr. 2026</span>
-                                </div>
-                                <span class="status-badge normal">Agendado</span>
-                            </div>
-                        </div>
-                        <p class="empty-state" id="maintenanceEmpty" hidden>Nenhuma manutenção encontrada.</p>
-                    </div>
-
-                    <div class="dash-card alerts-card">
-                        <h3>Alertas</h3>
-                        <div class="alerts-list">
-                            <div class="alert-item red">
-                                <i class="ph ph-warning-circle" aria-hidden="true"></i>
-                                <span>Pneu careca</span>
-                            </div>
-                            <div class="alert-item red">
-                                <i class="ph ph-drop" aria-hidden="true"></i>
-                                <span>Óleo vencido</span>
-                            </div>
-                            <div class="alert-item orange">
-                                <i class="ph ph-file-text" aria-hidden="true"></i>
-                                <span>IPVA próximo</span>
+                            <div class="metric-content">
+                                <span>Gasto no ano</span>
+                                <h2 id="yearTotal">R$ 4.280</h2>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="dash-card chart-card">
+                <div class="row g-3">
+                    <div class="col-xl-8">
+                        <section class="dash-card h-100">
+                            <h3>Próximas Manutenções</h3>
+                            <div class="maintenance-list">
+                                <div class="maintenance-item">
+                                    <div class="car-thumb">
+                                        <img src="images/pegeout206.jpg" alt="Peugeot 206" loading="lazy">
+                                    </div>
+                                    <div class="maintenance-info">
+                                        <h4>Troca de óleo</h4>
+                                        <span class="maintenance-vehicle">Peugeot 206</span>
+                                        <span>06 abr. 2026</span>
+                                    </div>
+                                    <span class="badge rounded-pill status-badge status-late">Urgência</span>
+                                </div>
+
+                                <div class="maintenance-item">
+                                    <div class="car-thumb">
+                                        <img src="images/citroenc3.jpg" alt="Citroën C3 2020" loading="lazy">
+                                    </div>
+                                    <div class="maintenance-info">
+                                        <h4>Alinhamento</h4>
+                                        <span class="maintenance-vehicle">Citroën C3 2020</span>
+                                        <span>08 abr. 2026</span>
+                                    </div>
+                                    <span class="badge rounded-pill status-badge status-warn">Atenção</span>
+                                </div>
+
+                                <div class="maintenance-item">
+                                    <div class="car-thumb">
+                                        <img src="images/pegeout206.jpg" alt="Peugeot 206" loading="lazy">
+                                    </div>
+                                    <div class="maintenance-info">
+                                        <h4>Revisão 20.000km</h4>
+                                        <span class="maintenance-vehicle">Peugeot 206</span>
+                                        <span>26 abr. 2026</span>
+                                    </div>
+                                    <span class="badge rounded-pill status-badge status-ok">Agendado</span>
+                                </div>
+                            </div>
+                            <p class="empty-state" id="maintenanceEmpty" hidden>Nenhuma manutenção encontrada.</p>
+                        </section>
+                    </div>
+
+                    <div class="col-xl-4">
+                        <section class="dash-card h-100">
+                            <h3>Alertas</h3>
+                            <div class="alerts-list">
+                                <div class="alert alert-danger alert-item">
+                                    <i class="ph ph-warning-circle" aria-hidden="true"></i>
+                                    <span>Pneu careca</span>
+                                </div>
+                                <div class="alert alert-danger alert-item">
+                                    <i class="ph ph-drop" aria-hidden="true"></i>
+                                    <span>Óleo vencido</span>
+                                </div>
+                                <div class="alert alert-warning alert-item">
+                                    <i class="ph ph-file-text" aria-hidden="true"></i>
+                                    <span>IPVA próximo</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <section class="dash-card chart-card">
                     <div class="chart-header">
                         <h3>Gastos mensais</h3>
                         <span class="chart-total" id="chartTotal"></span>
                     </div>
-                    
-                    <!-- Adicionado wrapper-scroll para resolver o problema no mobile -->
+
+                    <!-- Wrapper com rolagem horizontal para o mobile -->
                     <div class="chart-wrapper-scroll">
                         <div class="chart-container" role="group" aria-label="Gráfico de gastos mensais">
                             <div class="chart-plot" id="chartPlot"></div>
                             <div class="chart-labels" id="chartLabels"></div>
                         </div>
                     </div>
-
-                </div>
+                </section>
             </div>
         </main>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="JS/theme.js"></script>
     <script src="JS/dashboard.js"></script>
 </body>
 </html>

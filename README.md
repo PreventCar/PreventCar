@@ -46,6 +46,8 @@ Paleta em tons de azul (`#2563EB`) com accent laranja (`#F97316`), tipografia In
 
 Projeto em fase de **engenharia de requisitos e modelagem** (casos de uso, modelo de domínio, modelo ER). Estrutura de pastas, arquitetura e stack de tecnologias **ainda não foram definidas** — este README e a organização do repositório serão atualizados assim que essas decisões forem tomadas.
 
+O protótipo navegável em [`landing/`](landing/) usa HTML, CSS e JavaScript puros com [Bootstrap 5.3](https://getbootstrap.com/) carregado via CDN (sem etapa de build) — basta abrir `landing/index.html` no navegador.
+
 ## Documentação
 
 - [SITEMAP_FLUXOS.md](docs/SITEMAP_FLUXOS.md) — mapa do site (sitemap) e principais fluxos de navegação.

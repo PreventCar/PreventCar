@@ -1,10 +1,194 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PreventCar | Histórico</title><script src="https://unpkg.com/@phosphor-icons/web"></script><link rel="stylesheet" href="css/style.css"></head>
-<body class="dashboard-body"><div class="app-container"><div class="sidebar-overlay" id="sidebarOverlay"></div><aside class="sidebar" id="sidebar"><div><div class="sidebar-header"><div class="logo-icon"><img src="images/logo.svg" alt="PreventCar"></div><span class="logo-text">PreventCar</span></div><nav class="sidebar-nav"><a href="dashboard.html" class="nav-item"><i class="ph ph-squares-four"></i><span>Dashboard</span></a><a href="veiculos.html" class="nav-item"><i class="ph ph-car-profile"></i><span>Meus Veículos</span></a><a href="manutencoes.html" class="nav-item"><i class="ph ph-wrench"></i><span>Manutenções</span></a><a href="agendamentos.html" class="nav-item"><i class="ph ph-calendar-blank"></i><span>Agendamentos</span></a><a href="historico.html" class="nav-item active"><i class="ph ph-clock-counter-clockwise"></i><span>Histórico</span></a></nav></div><div class="sidebar-footer"><div class="user-profile"><img src="images/foto-do-perfil.png" class="user-avatar" alt=""><span class="user-name">João Silva</span></div></div></aside>
-<main class="main-content"><header class="topbar"><div class="topbar-left"><button class="mobile-menu-btn" id="mobileMenuBtn"><i class="ph ph-list"></i></button><div class="welcome-section"><h1>Histórico</h1></div></div><div class="topbar-actions"><button class="theme-toggle-dash" id="themeToggle" aria-label="Alternar tema"><i class="ph ph-sun sun-icon"></i><i class="ph ph-moon moon-icon"></i></button><div class="topbar-avatar"><img src="images/foto-do-perfil.png" alt="Perfil"></div></div></header>
-<div class="page-heading"><div><p class="breadcrumb">Início / <strong>Histórico</strong></p><h1>Histórico de Manutenções</h1><p>Todos os serviços realizados</p></div><div class="page-actions"><button class="outline-action"><i class="ph ph-file-pdf"></i>Exportar PDF</button><button class="outline-action"><i class="ph ph-file-csv"></i>Exportar CSV</button></div></div>
-<div class="filter-bar"><div class="search-box"><i class="ph ph-magnifying-glass"></i><input data-filter-target=".history-table tbody tr" type="search" placeholder="Buscar serviço" aria-label="Buscar no histórico"></div><select class="filter-select"><option>Veículo: Todos</option><option>Peugeot 206</option><option>Citroën C3 2020</option></select><select class="filter-select"><option>Tipo: Todos</option><option>Óleo e filtros</option><option>Freios</option></select><select class="filter-select"><option>Últimos 12 meses</option><option>Últimos 6 meses</option></select></div>
-<div class="stat-grid history-stats"><div class="stat-card"><div class="stat-icon blue metric-icon"><i class="ph ph-wrench"></i></div><div><span>Total de manutenções</span><strong>24</strong></div></div><div class="stat-card"><div class="stat-icon green"><i class="ph ph-money"></i></div><div><span>Gasto total</span><strong>R$ 8.450,00</strong></div></div><div class="stat-card"><div class="stat-icon" style="color:#8b5cf6;background:#ede9fe"><i class="ph ph-chart-line-up"></i></div><div><span>Custo médio</span><strong>R$ 352,00</strong></div></div></div>
-<div class="history-layout"><section class="history-card"><h2>Histórico Detalhado</h2><table class="history-table"><thead><tr><th>Data</th><th>Veículo</th><th>Serviço</th><th>Oficina</th><th>Custo</th><th>Status</th></tr></thead><tbody><tr><td>12/04/2026</td><td><strong>Peugeot 206</strong></td><td>Troca de óleo</td><td>AutoCenter</td><td>R$ 180,00</td><td><span class="status-pill success">Concluído</span></td></tr><tr><td>28/03/2026</td><td><strong>Citroën C3 2020</strong></td><td>Alinhamento</td><td>Mecânica Silva</td><td>R$ 220,00</td><td><span class="status-pill success">Concluído</span></td></tr><tr><td>15/02/2026</td><td><strong>Peugeot 206</strong></td><td>Revisão 40k</td><td>AutoCenter</td><td>R$ 850,00</td><td><span class="status-pill success">Concluído</span></td></tr><tr><td>20/01/2026</td><td><strong>Citroën C3 2020</strong></td><td>Troca pneus</td><td>PneuFácil</td><td>R$ 1.600,00</td><td><span class="status-pill success">Concluído</span></td></tr><tr><td>08/12/2025</td><td><strong>Peugeot 206</strong></td><td>Pastilha freio</td><td>AutoCenter</td><td>R$ 420,00</td><td><span class="status-pill success">Concluído</span></td></tr></tbody></table></section>
-<aside class="history-card"><h2>Distribuição de Custos</h2><div class="cost-chart"><i class="cost-bar" style="height:35%"><span>Óleo</span></i><i class="cost-bar" style="height:25%;background:#f59e0b"><span>Pneus</span></i><i class="cost-bar" style="height:20%;background:#ef4444"><span>Freios</span></i><i class="cost-bar" style="height:15%;background:#22c55e"><span>Rev.</span></i><i class="cost-bar" style="height:5%;background:#94a3b8"><span>Out.</span></i></div><ul class="legend"><li><span><i style="background:#2563eb"></i>Óleo e Filtros</span><strong>35%</strong></li><li><span><i style="background:#f59e0b"></i>Pneus</span><strong>25%</strong></li><li><span><i style="background:#ef4444"></i>Freios</span><strong>20%</strong></li><li><span><i style="background:#22c55e"></i>Revisões</span><strong>15%</strong></li><li><span><i style="background:#94a3b8"></i>Outros</span><strong>5%</strong></li></ul></aside></div></main></div><script src="JS/pages.js"></script></body></html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreventCar | Histórico</title>
+    <link rel="shortcut icon" href="favicons/favicon-16x16.png" type="image/x-icon">
+
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('preventcar:theme') || localStorage.getItem('theme');
+                if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-bs-theme', t === 'light' ? 'light' : 'dark');
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+    <div class="app-container">
+
+        <aside class="sidebar offcanvas-md offcanvas-start" id="sidebar" tabindex="-1" aria-labelledby="sidebarLabel">
+            <div>
+                <div class="sidebar-header">
+                    <div class="logo-icon"><img src="images/logo.svg" alt=""></div>
+                    <span class="logo-text" id="sidebarLabel">PreventCar</span>
+                    <button type="button" class="btn-close d-md-none ms-auto" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Fechar menu"></button>
+                </div>
+                <nav class="sidebar-nav" aria-label="Menu principal">
+                    <a href="dashboard.html" class="sidebar-link"><i class="ph ph-squares-four" aria-hidden="true"></i><span>Dashboard</span></a>
+                    <a href="veiculos.html" class="sidebar-link"><i class="ph ph-car-profile" aria-hidden="true"></i><span>Meus Veículos</span></a>
+                    <a href="manutencoes.html" class="sidebar-link"><i class="ph ph-wrench" aria-hidden="true"></i><span>Manutenções</span></a>
+                    <a href="agendamentos.html" class="sidebar-link"><i class="ph ph-calendar-blank" aria-hidden="true"></i><span>Agendamentos</span></a>
+                    <a href="historico.html" class="sidebar-link active" aria-current="page"><i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i><span>Histórico</span></a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="images/foto-do-perfil.png" class="user-avatar" alt="">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Plano Pro</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="icon-btn mobile-menu-btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Abrir menu">
+                        <i class="ph ph-list" aria-hidden="true"></i>
+                    </button>
+                    <div class="welcome-section"><span class="topbar-title">Histórico</span></div>
+                </div>
+                <div class="topbar-actions">
+                    <button type="button" class="icon-btn" data-theme-toggle aria-label="Alternar tema claro/escuro" aria-pressed="false">
+                        <i class="ph ph-sun sun-icon" aria-hidden="true"></i>
+                        <i class="ph ph-moon moon-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="topbar-avatar"><img src="images/foto-do-perfil.png" alt="Foto de perfil"></div>
+                </div>
+            </header>
+
+            <div class="page-heading">
+                <div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="dashboard.html">Início</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Histórico</li>
+                        </ol>
+                    </nav>
+                    <h1>Histórico de Manutenções</h1>
+                    <p>Todos os serviços realizados</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-outline-secondary" type="button" data-toast="Exportação em PDF disponível em breve."><i class="ph ph-file-pdf" aria-hidden="true"></i>Exportar PDF</button>
+                    <button class="btn btn-outline-secondary" type="button" data-toast="Exportação em CSV disponível em breve."><i class="ph ph-file-csv" aria-hidden="true"></i>Exportar CSV</button>
+                </div>
+            </div>
+
+            <div class="filter-bar" data-filter-group=".history-table tbody tr" data-empty-target="historyEmpty">
+                <div class="search-box">
+                    <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+                    <input type="search" class="form-control" placeholder="Buscar serviço" aria-label="Buscar no histórico">
+                </div>
+                <select class="form-select" data-filter-attr="vehicle" aria-label="Filtrar por veículo">
+                    <option value="">Veículo: Todos</option>
+                    <option>Peugeot 206</option>
+                    <option>Citroën C3 2020</option>
+                </select>
+                <select class="form-select" data-filter-attr="type" aria-label="Filtrar por tipo de serviço">
+                    <option value="">Tipo: Todos</option>
+                    <option>Óleo e filtros</option>
+                    <option>Pneus</option>
+                    <option>Freios</option>
+                    <option>Revisões</option>
+                </select>
+                <select class="form-select" aria-label="Período">
+                    <option>Últimos 12 meses</option>
+                    <option>Últimos 6 meses</option>
+                </select>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-3 g-3 mb-4">
+                <div class="col">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="ph ph-wrench" aria-hidden="true"></i></div>
+                        <div><span>Total de manutenções</span><strong>24</strong></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="ph ph-money" aria-hidden="true"></i></div>
+                        <div><span>Gasto total</span><strong>R$ 8.450,00</strong></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card">
+                        <div class="stat-icon purple"><i class="ph ph-chart-line-up" aria-hidden="true"></i></div>
+                        <div><span>Custo médio</span><strong>R$ 352,00</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-xl-9">
+                    <section class="history-card h-100">
+                        <h2>Histórico Detalhado</h2>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle history-table mb-0">
+                                <thead>
+                                    <tr><th scope="col">Data</th><th scope="col">Veículo</th><th scope="col">Serviço</th><th scope="col">Oficina</th><th scope="col">Custo</th><th scope="col">Status</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-vehicle="Peugeot 206" data-type="Óleo e filtros">
+                                        <td>12/04/2026</td><td><strong>Peugeot 206</strong></td><td>Troca de óleo</td><td>AutoCenter</td><td>R$ 180,00</td>
+                                        <td><span class="badge rounded-pill status-badge status-ok">Concluído</span></td>
+                                    </tr>
+                                    <tr data-vehicle="Citroën C3 2020" data-type="Pneus">
+                                        <td>28/03/2026</td><td><strong>Citroën C3 2020</strong></td><td>Alinhamento</td><td>Mecânica Silva</td><td>R$ 220,00</td>
+                                        <td><span class="badge rounded-pill status-badge status-ok">Concluído</span></td>
+                                    </tr>
+                                    <tr data-vehicle="Peugeot 206" data-type="Revisões">
+                                        <td>15/02/2026</td><td><strong>Peugeot 206</strong></td><td>Revisão 40k</td><td>AutoCenter</td><td>R$ 850,00</td>
+                                        <td><span class="badge rounded-pill status-badge status-ok">Concluído</span></td>
+                                    </tr>
+                                    <tr data-vehicle="Citroën C3 2020" data-type="Pneus">
+                                        <td>20/01/2026</td><td><strong>Citroën C3 2020</strong></td><td>Troca pneus</td><td>PneuFácil</td><td>R$ 1.600,00</td>
+                                        <td><span class="badge rounded-pill status-badge status-ok">Concluído</span></td>
+                                    </tr>
+                                    <tr data-vehicle="Peugeot 206" data-type="Freios">
+                                        <td>08/12/2025</td><td><strong>Peugeot 206</strong></td><td>Pastilha freio</td><td>AutoCenter</td><td>R$ 420,00</td>
+                                        <td><span class="badge rounded-pill status-badge status-ok">Concluído</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="empty-state" id="historyEmpty" hidden>Nenhum serviço encontrado com esses filtros.</p>
+                    </section>
+                </div>
+
+                <aside class="col-xl-3">
+                    <section class="history-card h-100">
+                        <h2>Distribuição de Custos</h2>
+                        <div class="cost-chart" aria-hidden="true">
+                            <i class="cost-bar c-oil" style="height:35%"><span>Óleo</span></i>
+                            <i class="cost-bar c-tires" style="height:25%"><span>Pneus</span></i>
+                            <i class="cost-bar c-brakes" style="height:20%"><span>Freios</span></i>
+                            <i class="cost-bar c-review" style="height:15%"><span>Rev.</span></i>
+                            <i class="cost-bar c-other" style="height:5%"><span>Out.</span></i>
+                        </div>
+                        <ul class="legend">
+                            <li class="c-oil"><span><i></i>Óleo e Filtros</span><strong>35%</strong></li>
+                            <li class="c-tires"><span><i></i>Pneus</span><strong>25%</strong></li>
+                            <li class="c-brakes"><span><i></i>Freios</span><strong>20%</strong></li>
+                            <li class="c-review"><span><i></i>Revisões</span><strong>15%</strong></li>
+                            <li class="c-other"><span><i></i>Outros</span><strong>5%</strong></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="JS/theme.js"></script>
+    <script src="JS/pages.js"></script>
+</body>
+</html>
