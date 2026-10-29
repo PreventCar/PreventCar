@@ -59,14 +59,15 @@
                 </nav>
             </div>
 
-            <div class="sidebar-footer">
-                <div class="user-profile">
+            <div class="sidebar-footer dropup">
+                <button class="user-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir menu do perfil">
                     <img src="images/foto-do-perfil.png" alt="" class="user-avatar">
-                    <div class="user-info">
+                    <span class="user-info">
                         <span class="user-name">João Silva</span>
                         <span class="user-role">Plano Pro</span>
-                    </div>
-                </div>
+                    </span>
+                </button>
+                <div class="dropdown-menu profile-menu" data-profile-menu></div>
             </div>
         </aside>
 
@@ -119,8 +120,11 @@
                         </section>
                     </div>
 
-                    <div class="topbar-avatar">
-                        <img src="images/foto-do-perfil.png" alt="Foto de perfil">
+                    <div class="dropdown">
+                        <button class="profile-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Perfil de João Silva">
+                            <img src="images/foto-do-perfil.png" alt="">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end profile-menu" data-profile-menu></div>
                     </div>
                 </div>
             </header>
@@ -263,6 +267,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="JS/theme.js"></script>
+    <script src="JS/profile.js"></script>
     <script src="JS/dashboard.js"></script>
 </body>
 </html>

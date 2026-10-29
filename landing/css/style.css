@@ -286,10 +286,21 @@ a { text-decoration: none; }
 .sidebar-link:hover { background-color: var(--bg-card-hover); color: var(--text-main); }
 .sidebar-link.active { background-color: var(--primary); color: #ffffff; font-weight: 600; }
 .sidebar-footer { border-top: 1px solid var(--border-color); padding-top: 16px; }
-.user-profile { display: flex; align-items: center; gap: 12px; padding: 8px; }
-.user-avatar, .topbar-avatar img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
-.topbar-avatar img { border: 2px solid transparent; transition: border-color 0.3s; }
-.topbar-avatar img:hover { border-color: var(--primary); cursor: pointer; }
+.user-profile { display: flex; align-items: center; gap: 12px; padding: 8px; width: 100%; background: none; border: 0; border-radius: 10px; text-align: left; color: inherit; cursor: pointer; }
+.user-profile:hover, .user-profile[aria-expanded="true"] { background-color: var(--bg-card-hover); }
+.user-avatar, .profile-btn img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+
+/* Menu de perfil (dropdown do Bootstrap) */
+.profile-btn { width: 44px; height: 44px; padding: 0; background: none; border: 0; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+.profile-btn img { border: 2px solid transparent; transition: border-color 0.3s; }
+.profile-btn:hover img, .profile-btn[aria-expanded="true"] img { border-color: var(--primary); }
+.profile-menu { width: 240px; padding: 14px 8px 8px; box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.35); }
+.profile-menu.show { animation: notif-in 0.18s ease-out; }
+.profile-menu-header { display: flex; align-items: center; gap: 12px; padding: 0 8px; }
+.user-email { font-size: 12px; color: var(--text-muted); overflow-wrap: anywhere; }
+.profile-plan { margin: 12px 8px 4px; background-color: rgba(59, 130, 246, 0.15); color: var(--primary); }
+.profile-menu .dropdown-item { --bs-dropdown-link-color: var(--text-main); --bs-dropdown-link-hover-bg: var(--bg-card-hover); --bs-dropdown-link-hover-color: var(--text-main); --bs-dropdown-link-active-bg: var(--primary); display: flex; align-items: center; gap: 10px; min-height: 44px; border-radius: 8px; font-size: 14px; font-weight: 500; }
+.profile-menu .profile-logout, .profile-menu .profile-logout:hover { color: #ef4444; }
 .user-info { display: flex; flex-direction: column; }
 .user-name { font-size: 14px; font-weight: 600; color: var(--text-main); }
 .user-role { font-size: 12px; color: var(--text-muted); }
