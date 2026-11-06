@@ -469,3 +469,118 @@ body.no-scroll { overflow: hidden; }
 .delay-2 { --delay: 0.25s; }
 .delay-3 { --delay: 0.4s; }
 .delay-4 { --delay: 0.55s; }
+/* --- 7. AJUSTES DE RESPONSIVIDADE (celulares e telas pequenas) --- */
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+img, video { max-width: 100%; }
+.sidebar { height: 100vh; height: 100dvh; overflow-y: auto; }
+.main-content { min-width: 0; }
+.vehicle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.container-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.pricing-container { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.history-card, .form-card, .summary-card, .calendar-card { min-width: 0; }
+.history-card { overflow-x: auto; }
+
+@media (max-width: 992px) {
+  .login-container { min-height: 100vh; min-height: 100dvh; }
+  .left-panel { padding: 2rem 1.5rem; }
+  .branding { margin-bottom: 1rem; }
+  .branding h1 { font-size: 3rem; }
+  .branding p { font-size: 1.4rem; }
+  .car-wrapper { max-width: 380px; margin-top: 1rem; }
+  .features-section { padding: 4rem 1.5rem; }
+  .footer-links-wrapper { gap: 60px; }
+}
+
+@media (max-width: 768px) {
+  .navbar { padding: 1rem 5%; }
+  .container-title-center { font-size: 2.25rem; }
+  .pricing-section { padding: 4rem 5%; }
+  .pricing-title { font-size: 2rem; margin-bottom: 40px; }
+  .info-container { padding: 3rem 5%; }
+  .container-cards { padding-top: 30px; gap: 20px; }
+  .footer-top { flex-direction: column; gap: 32px; }
+  .footer-links-wrapper { gap: 40px; flex-wrap: wrap; }
+  .topbar-main-flex { gap: 12px; }
+  .maintenance-item { gap: 8px; flex-wrap: wrap; }
+  .maintenance-info { min-width: 0; }
+  .toast { left: 16px; right: 16px; bottom: 16px; max-width: none; }
+}
+
+@media (max-width: 650px) {
+  .topbar-actions { gap: 10px; }
+  .page-heading { gap: 16px; margin-bottom: 20px; }
+  .page-heading .primary-action { width: 100%; }
+  .filter-select { flex: 1 1 130px; min-width: 0; }
+  .vehicle-footer { flex-wrap: wrap; gap: 6px 12px; }
+  .stat-card { padding: 16px; }
+  .maintenance-row { padding: 16px; gap: 12px; }
+  .form-card, .summary-card, .calendar-card, .history-card { padding: 16px; }
+  .calendar-grid { gap: 3px; }
+  .calendar-grid span { padding: 6px 0; }
+  .booking-actions { flex-direction: column; }
+  .modal { padding: 18px; max-height: 90vh; overflow-y: auto; }
+  .modal-actions { flex-direction: column-reverse; }
+  .modal-actions > * { width: 100%; }
+  .cost-bar { width: 22px; }
+}
+
+@media (max-width: 480px) {
+  .container-title { font-size: 2rem; }
+  .container-subtitle { font-size: 1rem; }
+  .actions { flex-direction: column; align-items: stretch; width: 100%; }
+  .actions > * { text-align: center; justify-content: center; }
+  .container-title-center { font-size: 1.85rem; }
+  .price { font-size: 2.5rem; }
+  .price-card { padding: 32px 20px; }
+  .feature-content { padding: 1.5rem; }
+  .feature-image-wrapper { padding: 0 1.5rem 1.5rem; }
+  .feature-content h2 { font-size: 22px; }
+  .nome__logo { font-size: 1.1rem; }
+
+  .left-panel { padding: 1.5rem 1rem; }
+  .left-panel .illustration { display: none; }
+  .branding { margin-bottom: 0; }
+  .branding h1 { font-size: 2.2rem; }
+  .branding p { font-size: 1.1rem; }
+  .right-panel { padding: 1.5rem 1rem; }
+  .login-card { padding: 1.5rem 1.15rem; }
+  .login-card .back-home { position: static; margin-bottom: 8px; }
+  .logo { margin-top: 0; }
+  .welcome-text { margin-bottom: 1.5rem; }
+  .form-actions { flex-wrap: wrap; gap: 10px; }
+
+  .main-content { padding: 14px 12px; }
+  .welcome-section h1 { font-size: 1.05rem; }
+  .metric-card { padding: 16px; }
+  .alert-item { padding: 10px 12px; font-size: 13px; }
+  .chart-header { align-items: flex-start; }
+  .notif-panel { left: 12px; right: 12px; }
+  .page-heading h1 { font-size: 22px; }
+  .page-actions { flex-wrap: wrap; }
+}
+
+@media (max-width: 360px) {
+  .branding h1 { font-size: 1.9rem; }
+  .sidebar { width: 85vw; }
+  .history-table { font-size: 12px; }
+}
+
+/* Corrige precedência: estas regras vêm depois do grid de 3 colunas da seção 7 */
+@media (max-width: 1000px) {
+  .vehicle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .vehicle-grid, .stat-grid { grid-template-columns: 1fr; gap: 16px; }
+  .topbar { flex-direction: row; align-items: center; margin-bottom: 20px; }
+  .topbar-left { min-width: 0; flex: 1; }
+  .topbar-actions { flex-wrap: nowrap; flex-shrink: 0; }
+  .vehicle-image { height: 190px; }
+  .vehicle-body { padding: 18px 18px 14px; }
+  .vehicle-footer { padding: 14px 18px; font-size: 13px; }
+  .add-vehicle-card { min-height: 140px; }
+  .filter-bar { padding: 14px; gap: 10px; }
+  .page-heading .primary-action { min-height: 46px; }
+  .maintenance-row, .stat-card { padding: 18px; }
+  .stat-grid { margin-bottom: 20px; }
+}
