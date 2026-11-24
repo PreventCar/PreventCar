@@ -129,8 +129,8 @@ body.no-scroll { overflow: hidden; }
 .footer-bottom p { font-size: 12px; color: #64748b; }
 
 /* --- 3. AUTENTICAÇÃO (LOGIN & REGISTER) --- */
-.login-container { display: flex; width: 100%; height: 100vh; overflow: hidden; }
-.left-panel { flex: 1; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(18,18,18,0.5)),url(../images/fundoLogin.jpg); background-position: center; background-size: cover; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; color: white; }
+.login-container { display: flex; width: 100%; min-height: 100vh; min-height: 100dvh; }
+.left-panel { flex: 1; position: sticky; top: 0; align-self: flex-start; height: 100vh; height: 100dvh; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(18,18,18,0.5)),url(../images/fundoLogin.jpg); background-position: center; background-size: cover; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; color: white; }
 .branding { text-align: center; margin-bottom: 3rem; }
 .branding h1 { font-size: 4.3rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 1px; }
 .branding p { font-size: 2rem; line-height: 1.4; font-weight: 400; }
@@ -144,10 +144,11 @@ body.no-scroll { overflow: hidden; }
 .icon-5 { top: 25%; left: 82%; font-size: 1.6rem; animation-delay: 0.2s; rotate: -45deg; }
 .icon-6 { top: 40%; right: -5%; font-size: 1.8rem; animation-delay: 0.8s; }
 
-.right-panel { flex: 1; background-color: var(--bg-body); display: flex; align-items: center; justify-content: center; padding: 2rem; }
+.right-panel { flex: 1; position: relative; background-color: var(--bg-body); display: flex; align-items: center; justify-content: center; padding: 2rem; }
 .login-card { background: var(--bg-card); border: 1px solid var(--border-color); width: 100%; max-width: 420px; padding: 2.5rem 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); position: relative; }
 .register-card { max-width: 500px; }
 .back-home { position: absolute; top: 20px; left: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; transition: color 0.3s; }
+.login-theme-btn { color: var(--text-main); z-index: 3; }
 .back-home:hover { color: var(--primary); }
 .logo { text-align: center; margin-bottom: 1.5rem; margin-top: 1rem; }
 .logo img{ width: 70px; }
@@ -326,11 +327,10 @@ body.no-scroll { overflow: hidden; }
 }
 
 @media (max-width: 992px) {
-  .login-container { flex-direction: column; height: auto; min-height: 100vh; overflow: visible; }
-  .left-panel, .right-panel { padding: 3rem 1.5rem; width: 100%; }
-  .login-card { padding: 2rem 1.5rem; box-shadow: none; border: 1px solid var(--border-color); }
-  .register-container { height: auto; min-height: 100vh; overflow: visible; }
-  .register-container .right-panel { align-items: flex-start; }
+  /* O card já tem logo e nome; o painel ilustrado só empurrava o formulário para baixo */
+  .left-panel { display: none; }
+  .right-panel { padding: 4.5rem 1.5rem 2rem; }
+  .login-card { padding: 2rem 1.5rem; box-shadow: none; }
 }
 
 @media (max-width: 768px) {
@@ -482,12 +482,6 @@ img, video { max-width: 100%; }
 .history-card { overflow-x: auto; }
 
 @media (max-width: 992px) {
-  .login-container { min-height: 100vh; min-height: 100dvh; }
-  .left-panel { padding: 2rem 1.5rem; }
-  .branding { margin-bottom: 1rem; }
-  .branding h1 { font-size: 3rem; }
-  .branding p { font-size: 1.4rem; }
-  .car-wrapper { max-width: 380px; margin-top: 1rem; }
   .features-section { padding: 4rem 1.5rem; }
   .footer-links-wrapper { gap: 60px; }
 }
@@ -538,12 +532,7 @@ img, video { max-width: 100%; }
   .feature-content h2 { font-size: 22px; }
   .nome__logo { font-size: 1.1rem; }
 
-  .left-panel { padding: 1.5rem 1rem; }
-  .left-panel .illustration { display: none; }
-  .branding { margin-bottom: 0; }
-  .branding h1 { font-size: 2.2rem; }
-  .branding p { font-size: 1.1rem; }
-  .right-panel { padding: 1.5rem 1rem; }
+  .right-panel { padding: 4rem 1rem 1.5rem; }
   .login-card { padding: 1.5rem 1.15rem; }
   .login-card .back-home { position: static; margin-bottom: 8px; }
   .logo { margin-top: 0; }
@@ -561,7 +550,6 @@ img, video { max-width: 100%; }
 }
 
 @media (max-width: 360px) {
-  .branding h1 { font-size: 1.9rem; }
   .sidebar { width: 85vw; }
   .history-table { font-size: 12px; }
 }
@@ -574,7 +562,10 @@ img, video { max-width: 100%; }
   .vehicle-grid, .stat-grid { grid-template-columns: 1fr; gap: 16px; }
   .topbar { flex-direction: row; align-items: center; margin-bottom: 20px; }
   .topbar-left { min-width: 0; flex: 1; }
-  .topbar-actions { flex-wrap: nowrap; flex-shrink: 0; }
+  /* Busca desce para uma linha própria em vez de espremer/estourar a topbar */
+  .topbar { flex-wrap: wrap; gap: 10px; }
+  .topbar-actions { display: contents; }
+  .search-box { order: 4; flex-basis: 100%; margin-top: 0; }
   .vehicle-image { height: 190px; }
   .vehicle-body { padding: 18px 18px 14px; }
   .vehicle-footer { padding: 14px 18px; font-size: 13px; }
