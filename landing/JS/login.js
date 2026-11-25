@@ -36,3 +36,8 @@ if (themeToggleBtn) {
         }
     });
 }
+// 3. Login: sem backend ainda, só leva para o dashboard (validação nativa do form roda antes)
+document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    window.location.href = 'dashboard.html';
+});

@@ -36,3 +36,17 @@ if (themeToggleBtn) {
         }
     });
 }
+// 3. Cadastro: confere as senhas e leva para o dashboard (sem backend ainda)
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirm-password');
+confirmPassword.addEventListener('input', () => confirmPassword.setCustomValidity(''));
+
+document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (password.value !== confirmPassword.value) {
+        confirmPassword.setCustomValidity('As senhas não coincidem.');
+        confirmPassword.reportValidity();
+        return;
+    }
+    window.location.href = 'dashboard.html';
+});
